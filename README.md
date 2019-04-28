@@ -1,2 +1,32 @@
 # projeto-lp1
-Projeto Final da disciplina de Linguagem de Programação 1 que tem o objetivo de implementar um programa de cadastro de animais para a loja de animais silvestres Pet Fera.
+
+## Autores
+
+    Bruno Wagner
+    José Alex
+	José Mário
+
+## Diretórios
+
+	projeto-lp1/
+		bin/
+		build/
+		csv/
+		doc/
+		include/
+		src/
+
+### Conteúdo de cada diretório
+
+**bin**: Arquivos executáveis
+**build**: Arquivos objetos
+**csv**: Arquivos csv para persistência dos dados do programa
+**doc**: Arquivos de configuração do Doxygen para gerar a documentação
+**include**: Arquivos de cabeçalho
+**src**: Todos os códigos fontes
+
+## Comandos para compilar e executar o código no terminal
+
+    make
+    make run
+
