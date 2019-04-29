@@ -25,13 +25,13 @@ class Animal{
 	protected:
 		int id; ///< Identificador do animal
 		std::string classe; ///< Classe do animal
-							  /**< 
-							   * String, onde é uma das seguintes: 
-							   *  - *Amphibia* (anfíbio)
-							   *  - *Reptilia* (réptil)
-							   *  - *Aves* (ave)
-							   *  - *Mammalia* (mamífero)
-							   */
+							/**< 
+							 * String, onde é uma das seguintes: 
+							 *  - *Amphibia* (anfíbio)
+							 *  - *Reptilia* (réptil)
+							 *  - *Aves* (ave)
+							 *  - *Mammalia* (mamífero)
+							 */
 		std::string nome_cientifico; ///< Nome científico do animal
 		char sexo; ///< Classe do animal
 				   /**<

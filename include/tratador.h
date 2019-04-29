@@ -37,9 +37,9 @@ class Tratador : public Funcionario {
 		int nivel_de_seguranca; ///< Indica quais animais o tratador pode tratar.
 								/**<
 								 * O nivel de segurança é um inteiro[0, 2], onde:
-								 *  - 0 indica que pode manipular aves
-								 *  - 1 indica que pode tratar aves, mamíferos e répteis
-								 *  - 2 pode manipular animais venenosos ou perigosos
+								 *  - 0 (indica que pode manipular aves)
+								 *  - 1 (indica que pode tratar aves, mamíferos e répteis)
+								 *  - 2 (pode manipular animais venenosos ou perigosos)
 								 */
 		
 };
