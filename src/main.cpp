@@ -19,6 +19,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <deque>
+
+#include <painel.h>
 
 using namespace std;
 
@@ -35,13 +38,15 @@ void painelAnimais(){
 
 void painelAnimaisConsulta(){
 	cout << "\nPET FERA" << endl << endl;
+	cout << "GERENCIAR >> ANIMAIS >> CONSULTAR" << endl << endl;
 	cout << "CONSULTAR ANIMAIS POR: " << endl;
 	cout << "\t1. NOME DE BATISMO" << endl;
 	cout << "\t2. ESPÉCIE" << endl;
 	cout << "\t3. CLASSE" << endl;
 	cout << "\t4. VETERINÁRIO RESPONSÁVEL" << endl;
-	cout << "\t4. TRATADOR RESPONSÁVEL" << endl;
-	cout << "\t5. VOLTAR" << endl << endl;
+	cout << "\t5. TRATADOR RESPONSÁVEL" << endl;
+	cout << "\n\t0. VOLTAR" << endl << endl;
+	cout << "SELECIONE UMA DAS OPÇÕES: ";
 }
 
 void painelFuncionarios(){
@@ -83,7 +88,36 @@ void painel(){
  */
 int main(int argc, const char* argv[]){
 
-	painel();
+	//painel();
+	//painelAnimaisConsulta();
+	deque<string> caminho;
+	Painel gerenciar("GERENCIAR", {"SAIR", "ANIMAIS", "FUNCIONÁRIOS"});
+	caminho.push_back("GERENCIAR");
+
+	while(gerenciar.getSelecao()){
+		
+		gerenciar.printPainel();
+		int opcao = gerenciar.getSelecao();
+
+		if(opcao == 1){
+			caminho.push_back("ANIMAIS");
+			Painel animais("ANIMAIS",{"VOLTAR", "CADASTRAR", "REMOVER", "ALTERAR", "CONSULTAR"}, caminho);
+			while(animais.getSelecao()){
+				animais.printPainel();
+			}
+			caminho.pop_back();
+			//gerenciar.setMensagem("op 1");
+
+		} else if(opcao == 2){
+			caminho.push_back("FUNCIONARIOS");
+			Painel funcionarios("FUNCIONARIOS",{"VOLTAR", "TRATADOR", "VETERINÁRIO"}, caminho);
+			while(funcionarios.getSelecao()){
+				funcionarios.printPainel();
+			}
+			caminho.pop_back();
+			//gerenciar.setMensagem("op 2");
+		}
+	}
 
 	return 0;
 }
