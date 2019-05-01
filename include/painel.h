@@ -7,64 +7,113 @@
 #include <vector>
 #include <deque>
 
-/// Classe Painel
+using namespace std;
+
+/// Responsável por gerar um painel de controle a partir de um vector de strings
 /** 
- * Responsável por gerar um painel de controle a partir de um vector de strings
+ * 
  */
 class Painel{
+	private:
+		std::string titulo; ///< Titulo do painel
+		std::vector<std::string> opcoes; ///< Vector com opções que serão exibidas no painel
+		std::deque<std::string> caminho; ///< Deque com caminho de opções escolhidas até o painel atual
+		std::string mensagem; ///< Mensagem que será exibida no painel 
+		std::string selecao; ///< Valor da opção selecionada
+		std::vector<std::string> opcoes_selecao; ///< Vector com primeira palavra de cada item do vector 'opcoes' em letras minúsculas
+		bool abrir = true; ///<
+
 	public:
-		/// Construtor de Painel com título e vector de opções.
-		/**
-		 * @param t Título do painel
-		 * @param o Vector de opções
-		*/
+		///@name Contrutores e destrutor
+		///@{
+ 
+		//! @brief Construtor de Painel com título e vector de opções.
+		//! @param t Título do painel
+		//! @param o Vector de opções
 		Painel(std::string t, std::vector<std::string> o);
-		/// Construtor de Painel sem caminho.
-		/**
-		 * @param t Título do painel
-		 * @param o Vector de opções
-		 * @param c Deque de caminho
-		*/
+		
+		//! @brief Construtor de Painel sem caminho.
+		//! @param t Título do painel
+		//! @param o Vector de opções
+		//! @param c Deque de caminho
 		Painel(std::string t, std::vector<std::string> o, std::deque<std::string> c);
+		
+		// Destrutor de Painel
 		//~Painel();
 
+		///@}
+		///@name Métodos getters
+		///@{
 		
-		/// Insere o valor da opção que se deseja selecionar 
-		/** @param s seleção */
-		void setSelecao(int s);
-		
-		/// Retorna a opção selecionada atualmente 
-		/** @return Retorna um inteiro */
-		int getSelecao();
+		//! @brief Retorna o título do painel
+		std::string getTitulo();
 
-		/// Verifica se a opção passada é válida
-		/**
-		 * Se o int **s** não está entre 0 (zero) e o tamanho do vector opcoes.
-		 * Um aviso de erro é setado na variável mensagem.
-		 * @param s Opção que s
-		*/
-		void verificaSelecao(int s);
+		//! @brief Retorna o vector das opções do painel
+		std::vector<std::string> getOpcoes();
 
-		/// Imprime o painel
-		void printPainel();
+		//! @brief Retorna o deque das opções que foram escolhidas até chegar no painel
+		std::deque<std::string> getCaminho();
 
-		/// Imprime o conteúdo do deque caminho
-		void printCaminho();
-
-		/// Atribui uma frase à variável mensagem
-		void setMensagem(std::string m);
-		
-		/// Retorna o conteúdo da variável mensagem
+		//! @brief Retorna o conteúdo da variável mensagem
 		std::string getMensagem();
 
+		//! @brief Retorna a opção selecionada atualmente 
+		std::string getSelecao();
 
-	private:
-		std::string titulo; ///< titulo do menu
-		std::vector<std::string> opcoes; ///< vector com opções que serão exibidas no menu
-		std::vector<std::string> opcoes_selecao; ///< vector com primeira palavra de cada item do vector opcoes em letras minúsculas
-		std::deque<std::string> caminho; ///< caminho de opções escolhidas até o menu atual
-		int selecao = 1; ///< opção selecionada
-		std::string mensagem;
+		//! @brief Retorna o vector da primeira palavra de cada item do vector 'opcoes' em letras minúsculas
+		std::vector<std::string> getOpcoesSelecao();
+
+		//! @brief Retorna o vector da primeira palavra de cada item do vector 'opcoes' em letras minúsculas
+		bool getAbrir();
+
+		///@}
+		///@name Métodos setters
+		///@{
+
+		//! @brief Esse método permite que o usuário especifique o título do painel
+		//! @param vector de opções do painel
+		void setTitulo(std::string titulo);
+
+		//! @brief Esse método permite que o usuário especifique o vector de opções do painel
+		//! @param o vector de opções do painel
+		void setOpcoes(std::vector<std::string> opcoes);
+
+		//! @brief 
+		void setCaminho(std::deque<std::string> c);
+
+		//! @brief Esse método permite que o usuário especifique uma mensagem para ser exibida no painel
+		//! @param m mensagem a ser exibida no painel
+		void setMensagem(std::string m);
+
+		//! @brief Esse método permite que o usuário especifique o valor da opção que se deseja selecionar
+		//! @see verificaSelecao()
+		//! @param s valor da opção que se deseja selecionar
+		void setSelecao(std::string s);
+
+		void setOpcoesSelecao(std::vector<std::string> os);
+
+		void setAbrir(bool a);
+		
+		///@}
+		///@name Métodos
+		///@{
+
+		//! @brief Imprime o painel
+		void printPainel();
+
+		//! @brief Imprime o conteúdo do deque caminho
+		void printCaminho();
+
+
+		//! @brief Verifica se a opção passada é válida
+		/*!
+		 * Se o inteiro 's' estiver entre 0 (zero) e o tamanho do vector 'opcoes'.
+		 * Um aviso de erro é setado na variável 'mensagem'.
+		 */
+		//! @param s Opção que s
+		void verificaSelecao(std::string s);
+		
+		///@}
 };
 
 #endif // __PAINEL_H__

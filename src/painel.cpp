@@ -8,23 +8,27 @@ Painel::Painel(string t, vector<string> o, deque<string> c) : titulo(t), opcoes(
 
 void Painel::printPainel(){
 	system("clear");
-
 	cout << "\nPET FERA "<< getSelecao() << "\n";
-	
-	printCaminho(); // Imprime o caminho
-	
-	cout << "\n" << titulo << endl; // Imprime o título
 
-	for (int i = 1; i < opcoes.size(); i++) // Lista as opções
+	// Imprime o deque 'caminho'
+	printCaminho(); 
+	
+	// Imprime a string 'titulo'
+	cout << "\n" << titulo << endl;
+
+	// Lista todas as opções do vector 'opcoes'
+	for (int i = 1; i < opcoes.size(); i++) 
 		cout << "\t" << i << ". " << opcoes[i] << endl;
-
-	cout << "\n\t0. " << opcoes[0] << "\n\n"; // Imprime opção 0 por último
 	
+	// Imprime opção 0 por último
+	cout << "\n\t0. " << opcoes[0] << "\n\n"; 
+	
+	// Se a string 'mensagem' não estiver vazia imprima-a
 	if(!mensagem.empty())
 		cout << getMensagem() << endl;
 
 	cout << "SELECIONE UMA DAS OPÇÕES: ";
-	int s;
+	string s;
 	cin >> s;
 	verificaSelecao(s);
 }
@@ -43,12 +47,22 @@ void Painel::printCaminho(){
 	}
 }
 
-void Painel::verificaSelecao(int s){
-	setSelecao(s);
-	if((s < 0) || (s > opcoes.size()-1))
+void Painel::verificaSelecao(std::string s){
+
+	bool ehValida = false;
+	for (int i = 0; i < opcoes.size(); ++i){
+		if(s == to_string(i))
+			ehValida = true;
+	}
+
+	if(ehValida){
+		if(s == to_string(0))
+			abrir = false;
+		else
+			setSelecao(s);
+	} else {
 		mensagem = "Opção inválida. Tente Novamente.\n";
-	//else if(s == 0)
-	//	caminho.pop_back();
+	}
 }
 
 void Painel::setMensagem(string m){
@@ -61,19 +75,20 @@ string Painel::getMensagem(){
 	return m;
 }
 
-void Painel::setSelecao(int s){
+void Painel::setSelecao(string s){
 	selecao = s;
 }
 
-int Painel::getSelecao(){
-	return selecao;
+string Painel::getSelecao(){
+	string s = selecao;
+	selecao.erase();
+	return s;
 }
 
-/*
-void Painel::setAbrir(bool a){
-	abrir = a;
-}
 bool Painel::getAbrir(){
 	return abrir;
 }
-*/
+
+void Painel::setAbrir(bool a){
+	abrir = a;
+}
