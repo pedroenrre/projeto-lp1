@@ -1,4 +1,5 @@
 #include <paineis.h>
+#include <deque>
 
 using namespace std;
 

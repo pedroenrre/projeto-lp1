@@ -1,10 +1,20 @@
 #include <painel.h>
 
+#include <iostream>
+#include <string>
+#include <cstring>
+#include <vector>
+#include <deque>
+
 using namespace std;
 
-Painel::Painel(string t, vector<string> o) : titulo(t), opcoes(o){}
+Painel::Painel(string t, vector<string> o) : titulo(t), opcoes(o){
+	abrir = true;
+}
 
-Painel::Painel(string t, vector<string> o, deque<string> c) : titulo(t), opcoes(o), caminho(c) {}
+Painel::Painel(string t, vector<string> o, deque<string> c) : titulo(t), opcoes(o), caminho(c) {
+	abrir = true;
+}
 
 void Painel::printPainel(){
 	

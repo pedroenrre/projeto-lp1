@@ -9,8 +9,6 @@
 
 #include <utilitarios.h>
 
-using namespace std;
-
 /// Responsável por gerar um painel de controle a partir de um vector de strings
 /** 
  * 
@@ -23,7 +21,7 @@ class Painel{
 		std::string mensagem; ///< Mensagem que será exibida no painel 
 		std::string selecao; ///< Valor da opção selecionada
 		std::vector<std::string> opcoes_selecao; ///< Vector com primeira palavra de cada item do vector 'opcoes' em letras minúsculas
-		bool abrir = true; ///<
+		bool abrir; ///<
 
 	public:
 		///@name Contrutores e destrutor

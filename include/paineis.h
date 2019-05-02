@@ -3,6 +3,12 @@
 
 #include <painel.h>
 
+#include <iostream>
+#include <string>
+#include <cstring>
+#include <vector>
+#include <deque>
+
 void painelPrincipal();
 void painelAnimais(deque<string> caminho);
 void painelAnimaisConsulta(deque<string> caminho);
