@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <deque>
+#include <cstdlib>
 
 void printCabecalho(std::string titulo, std::deque<std::string> caminho);
 void printCaminho(std::deque<std::string> caminho);
