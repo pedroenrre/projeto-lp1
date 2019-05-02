@@ -1,24 +1,53 @@
 #include <iostream>
 #include <string>
+#include <vector>
+#include <map>
 
 #include <funcionario.h>
 #include <tratador.h>
 #include <veterinario.h>
 #include <utilitarios.h>
 
-using namespace std;
+template<class C>
+class PainelCadastro{
+	private:
+		std::vector<std::string> atributos_comuns;
+		std::vector<std::string> atributos_especificos;
+		std::map<std::string, std::string> atributos;
+		C classe;
+
+	public:
+		PainelCadastro(std::vector<std::string> ac);
+		printPainelCadastro(std::deque<string> caminho);
+		inserirAtributos(C c);
+		inserirAtributosEspecificos(C c);
+};
+
+template<>
+PainelCadastro<Tratador>::PainelCadastro(std::vector<std::string> ac){
+	atributos_comuns = ac; //{"Nome", "CPF", "Idade", "Tipo sanguíneo", "Fator RH", "Especialidade"}
+	atributos_especificos = {"Nível de segurança"};
+}
+
+template<>
+PainelCadastro<Veterinario>::PainelCadastro(std::vector<std::string> ac){
+	atributos_comuns = ac; //{"Nome", "CPF", "Idade", "Tipo sanguíneo", "Fator RH", "Especialidade"}
+	atributos_especificos = {"CRMV"};
+}
+
+
+/*
 
 template<typename F>
 void painelCadastro(std::deque<string> caminho){
 
 	F funcionario;
 
-	std::string nome; 
-	std::string cpf;
-	short idade;
-	char tipo_sanguineo;
-	char fator_rh;
-	std::string especialidade;
+	// vector<string> = {"Nome", "CPF", "Idade"}
+	// usar um map<string, string>
+
+	// fazer do msm jeito de painel while(){ if(cont == 1) }
+
 
 	std::string titulo = "CADASTRAR " + caminho[2]; 
 	printCabecalho(titulo, caminho)
@@ -35,14 +64,17 @@ void painelCadastro(std::deque<string> caminho){
 }
 
 void cadastroFuncionario(Tratador t){
-	int nivel;
-	
-	cin >> nivel;
-	t.setNivelDeSeguranca(nivel);
+	int nivel_de_seguranca;
+	cout << "\tNível de segurança: " << nivel_de_seguranca << endl;
+
+	t.setNivelDeSeguranca(nivel_de_seguranca);
 }
 
 void cadastroFuncionario(Veterinario v){
 	string crmv;
-	cin >> crmv;
+	cout << "\tCRMV: " << crmv << endl;
+
 	v.setCRMV(crmv);
 }
+
+*/
