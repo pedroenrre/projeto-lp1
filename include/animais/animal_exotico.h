@@ -17,12 +17,28 @@ class AnimalExotico : public AnimalSilvestre {
 		*  Detailed description starts here.
 		*/
 		AnimalExotico();
+		/// Construtor de AnimalExotico com parâmetros.
+		/**
+		*  Detailed description starts here.
+		*/
+		AnimalExotico(std::string PO, std::string auth);
 		/// Destrutor de AnimalExotico.
 		/**
 		*  A more elaborate description of the destructor.
 		*/
 		~AnimalExotico();
-
+		///@name Método getter
+		///@{
+		//! @brief Esse método permite que o usuário verifique o país de origem
+		std::string getPais_Origem();
+		///@}
+		///@name Método setter
+		///@{
+		//! @brief Esse método permite que o usuário especifique o país de origem
+		//! @param PO país de origem
+		void setPais_Origem(std::string PO);
+		///@}
+		
 	protected:
 		std::string pais_origem; ///< País de origem
 		std::string autorizacao; ///< Autorização do IBAMA

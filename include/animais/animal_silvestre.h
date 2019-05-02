@@ -25,16 +25,22 @@ class AnimalSilvestre {
 		*  A more elaborate description of the destructor.
 		*/
 		~AnimalSilvestre();
-		/// Getter
-		/**
-		*  Método de acesso para retornar o atributo protegido autorizacao_ibama.
-		*/
+	
+		///@name Métodos getters
+		///@{
+ 
+		//! @brief Método getter para retorna a autorização do IBAMA.
 		std::string getAutorizacao_Ibama();
-		/// Setter
-		/**
-		*  Método de acesso para alterar o atributo protegido autorizacao_ibama.
-		*/
+		
+		///@}
+		///@name Métodos setters
+		///@{
+			
+		//! @brief Método setter para alterar a autorização do IBAMA.
 		void setAutorizacao_Ibama(std::string auth);
+		///@}
+
+		
 	protected:
 		std::string autorizacao_ibama; ///< Autorização do IBAMA
 		
