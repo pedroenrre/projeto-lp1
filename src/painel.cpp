@@ -1,11 +1,5 @@
 #include <painel.h>
 
-#include <iostream>
-#include <string>
-#include <cstring>
-#include <vector>
-#include <deque>
-
 using namespace std;
 
 Painel::Painel(string t, vector<string> o) : titulo(t), opcoes(o){
@@ -41,12 +35,13 @@ void Painel::verificaSelecao(std::string s){
 
 	bool ehValida = false;
 	for (int i = 0; i < opcoes.size(); ++i){
-		if(s == to_string(i))
+		string indice = intParaString(i);
+		if(s == indice)
 			ehValida = true;
 	}
 
 	if(ehValida){
-		if(s == to_string(0))
+		if(s == "0")
 			abrir = false;
 		else
 			setSelecao(s);
