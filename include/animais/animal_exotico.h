@@ -1,8 +1,8 @@
-#ifndef __ANIMALEXOTICO_H__
-#define __ANIMALEXOTICO_H__
+#ifndef __ANIMAL_EXOTICO_H__
+#define __ANIMAL_EXOTICO_H__
 
 #include <string>
-#include <animalsilvestre.h>
+#include <animal_silvestre.h>
 
 /// Classe AnimalExotico
 /**
@@ -29,4 +29,4 @@ class AnimalExotico : public AnimalSilvestre {
 		
 };
 
-#endif // __ANIMALEXOTICO_H__
+#endif // __ANIMAL_EXOTICO_H__

@@ -1,8 +1,8 @@
-#ifndef __ANFIBIOEXOTICO_H__
-#define __ANFIBIOEXOTICO_H__
+#ifndef __ANFIBIO_EXOTICO_H__
+#define __ANFIBIO_EXOTICO_H__
 
 #include <anfibio.h>
-#include <animalexotico.h>
+#include <animal_exotico.h>
 
 /// Classe AnfibioExotico
 /**
@@ -22,4 +22,4 @@ class AnfibioExotico : public Anfibio, AnimalExotico {
 		~AnfibioExotico();
 };
 
-#endif // __ANFIBIOEXOTICO_H__
+#endif // __ANFIBIO_EXOTICO_H__

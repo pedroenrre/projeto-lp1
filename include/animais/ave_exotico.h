@@ -1,8 +1,8 @@
-#ifndef __AVEEXOTICO_H__
-#define __AVEEXOTICO_H__
+#ifndef __AVE_EXOTICO_H__
+#define __AVE_EXOTICO_H__
 
 #include <ave.h>
-#include <animalexotico.h>
+#include <animal_exotico.h>
 
 /// Classe AveExotico
 /**
@@ -22,4 +22,4 @@ class AveExotico : public Ave, AnimalExotico {
 		~AveExotico();
 };
 
-#endif // __AVEEXOTICO_H__
+#endif // __AVE_EXOTICO_H__

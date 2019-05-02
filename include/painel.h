@@ -7,6 +7,8 @@
 #include <vector>
 #include <deque>
 
+#include <utilitarios.h>
+
 using namespace std;
 
 /// Responsável por gerar um painel de controle a partir de um vector de strings
@@ -71,12 +73,12 @@ class Painel{
 		///@{
 
 		//! @brief Esse método permite que o usuário especifique o título do painel
-		//! @param vector de opções do painel
-		void setTitulo(std::string titulo);
+		//! @param t vector de opções do painel
+		void setTitulo(std::string t);
 
 		//! @brief Esse método permite que o usuário especifique o vector de opções do painel
 		//! @param o vector de opções do painel
-		void setOpcoes(std::vector<std::string> opcoes);
+		void setOpcoes(std::vector<std::string> o);
 
 		//! @brief 
 		void setCaminho(std::deque<std::string> c);
@@ -90,8 +92,12 @@ class Painel{
 		//! @param s valor da opção que se deseja selecionar
 		void setSelecao(std::string s);
 
+		//! @brief Esse método permite que o usuário especifique !!!
+		//! @param os !!!
 		void setOpcoesSelecao(std::vector<std::string> os);
 
+		//! @brief Esse método permite que o usuário especifique !!!
+		//! @param a !!!
 		void setAbrir(bool a);
 		
 		///@}
@@ -100,10 +106,6 @@ class Painel{
 
 		//! @brief Imprime o painel
 		void printPainel();
-
-		//! @brief Imprime o conteúdo do deque caminho
-		void printCaminho();
-
 
 		//! @brief Verifica se a opção passada é válida
 		/*!

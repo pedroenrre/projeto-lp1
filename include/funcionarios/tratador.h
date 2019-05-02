@@ -2,7 +2,6 @@
 #define __TRATADOR_H__
 
 #include <funcionario.h>
-#include <string>
 
 /// Classe Tratador
 /**
@@ -21,27 +20,46 @@
  *    onça-pintada, tamanduá-bandeira, etc.
  */
 class Tratador : public Funcionario {
-	public:
-		/// Construtor de Tratador sem parâmetros.
-		/**
-		*  Detailed description starts here.
-		*/
-		Tratador();
-		/// Destrutor de Tratador.
-		/**
-		*  A more elaborate description of the destructor.
-		*/
-		~Tratador();
-
 	private:
 		int nivel_de_seguranca; ///< Indica quais animais o tratador pode tratar.
-								/**<
-								 * O nivel de segurança é um inteiro[0, 2], onde:
-								 *  - 0 (indica que pode manipular aves)
-								 *  - 1 (indica que pode tratar aves, mamíferos e répteis)
-								 *  - 2 (pode manipular animais venenosos ou perigosos)
-								 */
 		
+	public:
+		///@name Construtores e destrutor
+		///@{
+		
+		//! @brief Construtor padrão
+		Tratador();
+		
+		///@}
+		///@name Métodos getters
+		///@{
+		
+		//! @brief Retorna o nível de segurança do tratador.
+		/*!
+		 * O nivel de segurança é um inteiro[0, 2], onde:
+		 *  - 0 (indica que pode manipular aves)
+		 *  - 1 (indica que pode tratar aves, mamíferos e répteis)
+		 *  - 2 (pode manipular animais venenosos ou perigosos)
+		 */
+		//! @return inteiro[0, 2]
+		int getNivelDeSeguranca();
+		
+		///@}
+		///@name Métodos setters
+		///@{
+		
+		//! @brief Esse método permite que o usuário especifique o nível de segurança do tratador
+		/*!
+		 * O nivel de segurança é um inteiro[0, 2], onde:
+		 *  - 0 (indica que pode manipular aves)
+		 *  - 1 (indica que pode tratar aves, mamíferos e répteis)
+		 *  - 2 (pode manipular animais venenosos ou perigosos)
+		 * Caso o 'nds' não seja um inteiro[0, 2], a função retorna -1;
+		 */
+		//! @param nds nível de segurança do tratador
+		void setNivelDeSeguranca(int nds);
+		
+		///@}
 };
 
 #endif // __TRATADOR_H__

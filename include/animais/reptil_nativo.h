@@ -1,8 +1,8 @@
-#ifndef __REPTILNATIVO_H__
-#define __REPTILNATIVO_H__
+#ifndef __REPTIL_NATIVO_H__
+#define __REPTIL_NATIVO_H__
 
 #include <reptil.h>
-#include <animalnativo.h>
+#include <animal_nativo.h>
 
 /// Classe ReptilNativo
 /**
@@ -22,4 +22,4 @@ class ReptilNativo : public Reptil, AnimalNativo {
 		~ReptilNativo();
 };
 
-#endif // __REPTILNATIVO_H__
+#endif // __REPTIL_NATIVO_H__

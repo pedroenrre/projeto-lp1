@@ -7,14 +7,8 @@ Painel::Painel(string t, vector<string> o) : titulo(t), opcoes(o){}
 Painel::Painel(string t, vector<string> o, deque<string> c) : titulo(t), opcoes(o), caminho(c) {}
 
 void Painel::printPainel(){
-	system("clear");
-	cout << "\nPET FERA "<< getSelecao() << "\n";
-
-	// Imprime o deque 'caminho'
-	printCaminho(); 
 	
-	// Imprime a string 'titulo'
-	cout << "\n" << titulo << endl;
+	printCabecalho(titulo, caminho);
 
 	// Lista todas as opções do vector 'opcoes'
 	for (int i = 1; i < opcoes.size(); i++) 
@@ -31,20 +25,6 @@ void Painel::printPainel(){
 	string s;
 	cin >> s;
 	verificaSelecao(s);
-}
-
-void Painel::printCaminho(){
-
-	if(!caminho.empty()){
-		cout << "\n";
-		deque<string> :: iterator it;
-		for (it = caminho.begin(); it != caminho.end(); ++it){
-			cout << *it;
-			if(it != caminho.end()-1)
-				cout << " >> ";
-		}
-		cout << "\n";
-	}
 }
 
 void Painel::verificaSelecao(std::string s){

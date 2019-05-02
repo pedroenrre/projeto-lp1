@@ -1,8 +1,8 @@
-#ifndef __ANFIBIONATIVO_H__
-#define __ANFIBIONATIVO_H__
+#ifndef __ANFIBIO_NATIVO_H__
+#define __ANFIBIO_NATIVO_H__
 
 #include <anfibio.h>
-#include <animalnativo.h>
+#include <animal_nativo.h>
 
 /// Classe AnfibioNativo
 /**
@@ -22,4 +22,4 @@ class AnfibioNativo : public Anfibio, AnimalNativo {
 		~AnfibioNativo();
 };
 
-#endif // __ANFIBIONATIVO_H__
+#endif // __ANFIBIO_NATIVO_H__

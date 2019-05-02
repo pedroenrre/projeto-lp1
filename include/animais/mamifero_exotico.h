@@ -1,8 +1,8 @@
-#ifndef __MAMIFEROEXOTICO_H__
-#define __MAMIFEROEXOTICO_H__
+#ifndef __MAMIFERO_EXOTICO_H__
+#define __MAMIFERO_EXOTICO_H__
 
 #include <mamifero.h>
-#include <animalexotico.h>
+#include <animal_exotico.h>
 
 /// Classe MamiferoExotico
 /**
@@ -22,4 +22,4 @@ class MamiferoExotico : public Mamifero, AnimalExotico {
 		~MamiferoExotico();
 };
 
-#endif // __MAMIFEROEXOTICO_H__
+#endif // __MAMIFERO_EXOTICO_H__

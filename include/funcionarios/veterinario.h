@@ -2,7 +2,6 @@
 #define __VETERINARIO_H__
 
 #include <funcionario.h>
-#include <string>
 
 /// Classe Veterionario
 /**
@@ -21,20 +20,33 @@
  *    onça-pintada, tamanduá-bandeira, etc.
  */
 class Veterinario : public Funcionario {
-	public:
-		/// Construtor de Veterinario sem parâmetros.
-		/**
-		*  Detailed description starts here.
-		*/
-		Veterinario();
-		/// Destrutor de Veterinario.
-		/**
-		*  A more elaborate description of the destructor.
-		*/
-		~Veterinario();
-
 	private:
-		std::string m_crmv; ///< Código CRMV
+		std::string crmv; ///< Código CRMV
+
+	public:
+		///@name Construtores e destrutor
+		///@{
+		
+		//! @brief Construtor padrão
+		Veterinario();
+		
+		///@}
+		///@name Métodos getters
+		///@{
+		
+		//! @brief Retorna o código CRMV do veterinário.
+		std::string getCRMV();
+		
+		///@}
+		///@name Métodos setters
+		///@{
+		
+		//! @brief Esse método permite que o usuário especifique o código CRMV do veterinário
+		//! @param c código CRMV do veterinário
+		void setCRMV(std::string c);
+		
+		///@}
+
 };
 
 #endif // __VETERINARIO_H__

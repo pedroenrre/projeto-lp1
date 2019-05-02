@@ -1,8 +1,11 @@
-all: main.o painel.o paineis.o
+all: main.o utilitarios.o painel.o paineis.o
 	g++ -Wall -ansi -pedantic -o main ./build/*.o
 
 main.o:
 	g++ -c ./src/main.cpp -I ./include -o ./build/main.o
+
+utilitarios.o:
+	g++ -c ./src/utilitarios.cpp -I ./include -o ./build/utilitarios.o
 
 painel.o:
 	g++ -c ./src/painel.cpp -I ./include -o ./build/painel.o

@@ -1,8 +1,8 @@
-#ifndef __REPTILEXOTICO_H__
-#define __REPTILEXOTICO_H__
+#ifndef __REPTIL_EXOTICO_H__
+#define __REPTIL_EXOTICO_H__
 
 #include <reptil.h>
-#include <animalexotico.h>
+#include <animal_exotico.h>
 
 /// Classe ReptilExotico
 /**
@@ -22,4 +22,4 @@ class ReptilExotico : public Reptil, AnimalExotico {
 		~ReptilExotico();
 };
 
-#endif // __REPTILEXOTICO_H__
+#endif // __REPTIL_EXOTICO_H__

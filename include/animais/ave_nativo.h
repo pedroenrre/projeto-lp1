@@ -1,8 +1,8 @@
-#ifndef __AVENATIVO_H__
-#define __AVENATIVO_H__
+#ifndef __AVE_NATIVO_H__
+#define __AVE_NATIVO_H__
 
 #include <ave.h>
-#include <animalnativo.h>
+#include <animal_nativo.h>
 
 /// Classe AveNativo
 /**
@@ -22,4 +22,4 @@ class AveNativo : public Ave, AnimalNativo {
 		~AveNativo();
 };
 
-#endif // __AVENATIVO_H__
+#endif // __AVE_NATIVO_H__

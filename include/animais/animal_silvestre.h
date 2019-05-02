@@ -1,5 +1,5 @@
-#ifndef __ANIMALSILVESTRE_H__
-#define __ANIMALSILVESTRE_H__
+#ifndef __ANIMAL_SILVESTRE_H__
+#define __ANIMAL_SILVESTRE_H__
 
 #include <string>
 
@@ -26,4 +26,4 @@ class AnimalSilvestre {
 		
 };
 
-#endif // __ANIMALSILVESTRE_H__
+#endif // __ANIMAL_SILVESTRE_H__

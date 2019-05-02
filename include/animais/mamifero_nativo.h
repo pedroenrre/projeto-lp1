@@ -1,8 +1,8 @@
-#ifndef __MAMIFERONATIVO_H__
-#define __MAMIFERONATIVO_H__
+#ifndef __MAMIFERO_NATIVO_H__
+#define __MAMIFERO_NATIVO_H__
 
 #include <mamifero.h>
-#include <animalnativo.h>
+#include <animal_nativo.h>
 
 /// Classe MamiferoNativo
 /**
@@ -22,4 +22,4 @@ class MamiferoNativo : public Mamifero, AnimalNativo {
 		~MamiferoNativo();
 };
 
-#endif // __MAMIFERONATIVO_H__
+#endif // __MAMIFERO_NATIVO_H__
