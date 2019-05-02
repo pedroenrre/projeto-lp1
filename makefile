@@ -1,5 +1,5 @@
 all: main.o utilitarios.o painel.o paineis.o
-	g++ -Wall -ansi -pedantic -o main ./build/*.o
+	g++ -Wall -ansi -pedantic -o ./bin/program.out
 
 main.o:
 	g++ -c ./src/main.cpp -I ./include -o ./build/main.o
@@ -14,8 +14,8 @@ paineis.o:
 	g++ -c ./src/paineis.cpp -I ./include -o ./build/paineis.o
 
 clear:
-	rm ./build/*.o
-	rm ./main
+	rm ./build/*
+	rm ./bin/*
 
 run:
-	./main
+	./bin/program.out
