@@ -10,10 +10,10 @@
 #include <deque>
 
 void painelPrincipal();
-void painelAnimais(deque<string> caminho);
-void painelAnimaisConsulta(deque<string> caminho);
-void painelFuncionarios(deque<string> caminho);
-void painelTratadores(deque<string> caminho);
-void painelVeterinarios(deque<string> caminho);
+void painelAnimais(std::deque<std::string> caminho);
+void painelAnimaisConsulta(std::deque<std::string> caminho);
+void painelFuncionarios(std::deque<std::string> caminho);
+void painelTratadores(std::deque<std::string> caminho);
+void painelVeterinarios(std::deque<std::string> caminho);
 
 #endif // __PAINEIS_H__S

@@ -1,5 +1,5 @@
 all: main.o utilitarios.o painel.o paineis.o
-	g++ -Wall -ansi -pedantic -o ./bin/program.out
+	g++ -Wall -ansi -pedantic -o ./bin/program.out ./build/*.o
 
 main.o:
 	g++ -c ./src/main.cpp -I ./include -o ./build/main.o

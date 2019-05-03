@@ -1,5 +1,4 @@
 #include <paineis.h>
-#include <deque>
 
 using namespace std;
 
@@ -7,7 +6,8 @@ void painelPrincipal(){
 	deque<string> caminho;
 	caminho.push_back("GERENCIAR");
 	string titulo = "GERENCIAR";
-	vector<string> opcoes = {"SAIR", "ANIMAIS", "FUNCIONÁRIOS"};
+	string vetor_opcoes[] = {"SAIR", "ANIMAIS", "FUNCIONÁRIOS"};
+	vector<string> opcoes(vetor_opcoes, vetor_opcoes + sizeof(vetor_opcoes) / sizeof(string));
 	Painel gerenciar(titulo, opcoes);
 
 	while(gerenciar.getAbrir()){
@@ -25,7 +25,8 @@ void painelPrincipal(){
 void painelAnimais(deque<string> caminho){
 	caminho.push_back("ANIMAIS");
 	string titulo = "ANIMAIS";
-	vector<string> opcoes = {"VOLTAR", "CADASTRAR", "REMOVER", "ALTERAR", "CONSULTAR"};
+	string vetor_opcoes[] = {"VOLTAR", "CADASTRAR", "REMOVER", "ALTERAR", "CONSULTAR"};
+	vector<string> opcoes(vetor_opcoes, vetor_opcoes + sizeof(vetor_opcoes) / sizeof(string));
 	Painel animais(titulo, opcoes, caminho);
 	
 	while(animais.getAbrir()){
@@ -50,7 +51,8 @@ void painelAnimais(deque<string> caminho){
 void painelAnimaisConsulta(deque<string> caminho){
 	caminho.push_back("CONSULTAR");
 	string titulo = "CONSULTAR ANIMAIS POR";
-	vector<string> opcoes = {"VOLTAR", "NOME DE BATISMO", "ESPÉCIE", "CLASSE", "VETERINÁRIO RESPONSÁVEL", "TRATADOR RESPONSÁVEL"};
+	string vetor_opcoes[] = {"VOLTAR", "NOME DE BATISMO", "ESPÉCIE", "CLASSE", "VETERINÁRIO RESPONSÁVEL", "TRATADOR RESPONSÁVEL"};
+	vector<string> opcoes(vetor_opcoes, vetor_opcoes + sizeof(vetor_opcoes) / sizeof(string));
 	Painel consultar(titulo, opcoes, caminho);
 	
 	while(consultar.getAbrir()){
@@ -78,7 +80,8 @@ void painelAnimaisConsulta(deque<string> caminho){
 void painelFuncionarios(deque<string> caminho){
 	caminho.push_back("FUNCIONÁRIOS");
 	string titulo = "FUNCIONÁRIOS";
-	vector<string> opcoes = {"VOLTAR", "TRATADOR", "VETERINÁRIO"};
+	string vetor_opcoes[] = {"VOLTAR", "TRATADOR", "VETERINÁRIO"};
+	vector<string> opcoes(vetor_opcoes, vetor_opcoes + sizeof(vetor_opcoes) / sizeof(string));
 	Painel funcionarios(titulo, opcoes, caminho);	
 
 	while(funcionarios.getAbrir()){
@@ -98,7 +101,8 @@ void painelFuncionarios(deque<string> caminho){
 void painelTratadores(deque<string> caminho){
 	caminho.push_back("TRATADORES");
 	string titulo = "TRATADORES";
-	vector<string> opcoes = {"VOLTAR", "CADASTRAR", "REMOVER", "ALTERAR", "CONSULTAR"};
+	string vetor_opcoes[] = {"VOLTAR", "CADASTRAR", "REMOVER", "ALTERAR", "CONSULTAR"};
+	vector<string> opcoes(vetor_opcoes, vetor_opcoes + sizeof(vetor_opcoes) / sizeof(string));
 	Painel tratadores(titulo, opcoes, caminho);
 	
 	while(tratadores.getAbrir()){
@@ -124,7 +128,8 @@ void painelTratadores(deque<string> caminho){
 void painelVeterinarios(deque<string> caminho){
 	caminho.push_back("VETERINARIOS");
 	string titulo = "VETERINARIOS";
-	vector<string> opcoes = {"VOLTAR", "CADASTRAR", "REMOVER", "ALTERAR", "CONSULTAR"};
+	string vetor_opcoes[] = {"VOLTAR", "CADASTRAR", "REMOVER", "ALTERAR", "CONSULTAR"};
+	vector<string> opcoes(vetor_opcoes, vetor_opcoes + sizeof(vetor_opcoes) / sizeof(string));
 	Painel veterinarios(titulo, opcoes, caminho);
 	
 	while(veterinarios.getAbrir()){
