@@ -1,7 +1,7 @@
 #ifndef __VETERINARIO_H__
 #define __VETERINARIO_H__
 
-#include <funcionario.h>
+#include <funcionarios/funcionario.h>
 
 /// Classe Veterionario
 /**
@@ -46,7 +46,16 @@ class Veterinario : public Funcionario {
 		void setCRMV(std::string c);
 		
 		///@}
-
+		///@name Métodos utilitários
+		///@{
+		
+		//! @brief Esse método permite que o usuário especifique o nível de segurança do tratador
+		void limpar();
+		
+		friend std::istream& operator>> (std::istream &i, Veterinario &v);
+		friend std::ostream& operator<< (std::ostream &o, Veterinario const v);
+		
+		///@}
 };
 
 #endif // __VETERINARIO_H__

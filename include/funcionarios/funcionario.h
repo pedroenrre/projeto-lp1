@@ -2,6 +2,7 @@
 #define __FUNCIONARIO_H__
 
 #include <string>
+#include "utilitarios.h"
 
 /// Classe Funcionario
 /** 
@@ -16,6 +17,7 @@ class Funcionario{
 		char tipo_sanguineo; ///< Tipo sanguíneo é uma cadeia de caracteres
 		char fator_rh; ///< Fator RH do funcionario
 		std::string especialidade; ///< Especialidade do funcionário
+		int contador_cin;
 
 	public:
 		///@name Contrutores e destrutor
@@ -53,6 +55,8 @@ class Funcionario{
 
 		//! @brief Retorna a especialidade do funcionário
 		std::string getEspecialidade();
+
+		int getContadorCin();
 		
 		///@}
 		///@name Métodos setters
@@ -98,7 +102,11 @@ class Funcionario{
 		//! @param e especialidade do funcionário
 		void setEspecialidade(std::string e);
 
+		void setContadorCin(int c);
+
 		///@}
+
+		virtual void limpar() = 0;
 };
 
 #endif // __FUNCIONARIO_H__

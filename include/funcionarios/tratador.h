@@ -1,7 +1,8 @@
 #ifndef __TRATADOR_H__
 #define __TRATADOR_H__
 
-#include <funcionario.h>
+#include <funcionarios/funcionario.h>
+#include <iostream>
 
 /// Classe Tratador
 /**
@@ -22,7 +23,7 @@
 class Tratador : public Funcionario {
 	private:
 		int nivel_de_seguranca; ///< Indica quais animais o tratador pode tratar.
-		
+
 	public:
 		///@name Construtores e destrutor
 		///@{
@@ -58,6 +59,16 @@ class Tratador : public Funcionario {
 		 */
 		//! @param nds nível de segurança do tratador
 		void setNivelDeSeguranca(int nds);
+		
+		///@}
+		///@name Métodos setters
+		///@{
+		
+		//! @brief Esse método permite que o usuário especifique o nível de segurança do tratador
+		void limpar();
+		
+		friend std::istream& operator>> (std::istream &i, Tratador &t);
+		friend std::ostream& operator<< (std::ostream &o, Tratador const t);
 		
 		///@}
 };

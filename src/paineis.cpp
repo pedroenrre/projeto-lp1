@@ -89,66 +89,13 @@ void painelFuncionarios(deque<string> caminho){
 		string opcao = funcionarios.getSelecao();
 
 		if(opcao == "1"){
-			painelTratadores(caminho);
+			string titulo = "TRATADORES";
+			painelFuncionarios<Tratador>(titulo, caminho);
 
 		} else if(opcao == "2"){
-			painelVeterinarios(caminho);
+			string titulo = "VETERINARIOS";
+			painelFuncionarios<Veterinario>(titulo, caminho);
 
 		}
 	}
 }
-
-void painelTratadores(deque<string> caminho){
-	caminho.push_back("TRATADORES");
-	string titulo = "TRATADORES";
-	string vetor_opcoes[] = {"VOLTAR", "CADASTRAR", "REMOVER", "ALTERAR", "CONSULTAR"};
-	vector<string> opcoes(vetor_opcoes, vetor_opcoes + sizeof(vetor_opcoes) / sizeof(string));
-	Painel tratadores(titulo, opcoes, caminho);
-	
-	while(tratadores.getAbrir()){
-		tratadores.printPainel();
-		string opcao = tratadores.getSelecao();
-
-		if(opcao == "1"){
-			tratadores.setMensagem("CADASTRAR");
-
-		} else if(opcao == "2"){
-			tratadores.setMensagem("REMOVER");
-
-		} else if(opcao == "3"){
-			tratadores.setMensagem("ALTERAR");
-
-		} else if(opcao == "4"){
-			tratadores.setMensagem("CONSULTAR");
-
-		}
-	}
-}
-
-void painelVeterinarios(deque<string> caminho){
-	caminho.push_back("VETERINARIOS");
-	string titulo = "VETERINARIOS";
-	string vetor_opcoes[] = {"VOLTAR", "CADASTRAR", "REMOVER", "ALTERAR", "CONSULTAR"};
-	vector<string> opcoes(vetor_opcoes, vetor_opcoes + sizeof(vetor_opcoes) / sizeof(string));
-	Painel veterinarios(titulo, opcoes, caminho);
-	
-	while(veterinarios.getAbrir()){
-		veterinarios.printPainel();
-		string opcao = veterinarios.getSelecao();
-
-		if(opcao == "1"){
-			veterinarios.setMensagem("CADASTRAR");
-
-		} else if(opcao == "2"){
-			veterinarios.setMensagem("REMOVER");
-
-		} else if(opcao == "3"){
-			veterinarios.setMensagem("ALTERAR");
-
-		} else if(opcao == "4"){
-			veterinarios.setMensagem("CONSULTAR");
-
-		}
-	}
-}
-
