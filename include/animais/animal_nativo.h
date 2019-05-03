@@ -50,7 +50,7 @@ class AnimalNativo : public AnimalSilvestre {
 		//! @param auth 
 		void setAutorizacao(std::string auth);
 		///@}
-		
+		 
 		
 		
 		
