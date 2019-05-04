@@ -4,6 +4,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+
+#include "excecao.h"
 #include "utilitarios.h"
 
 /// Classe Funcionario
@@ -16,7 +18,7 @@ class Funcionario{
 		std::string nome; ///< Nome do funcionário
 		std::string cpf; ///< CPF do funcionário
 		short idade; ///< Idade do funcionário
-		char tipo_sanguineo; ///< Tipo sanguíneo é uma cadeia de caracteres
+		std::string tipo_sanguineo; ///< Tipo sanguíneo é uma cadeia de caracteres
 		char fator_rh; ///< Fator RH do funcionario
 		std::string especialidade; ///< Especialidade do funcionário
 		int contador_cin;
@@ -50,7 +52,7 @@ class Funcionario{
 		short getIdade();
 
 		//! @brief Retorna o tipo sanguíneo é uma cadeia de caracteres
-		char getTipo_sanguineo();
+		std::string getTipo_sanguineo();
 
 		//! @brief Retorna o tipo sanguíneo do funcionario
 		char getFator_rh();
@@ -87,11 +89,11 @@ class Funcionario{
 		 *  - -
 		 */
 		//! @param ts tipo sanguíneo do funcionário
-		void setTipo_sanguineo(char ts);
+		void setTipo_sanguineo(std::string ts);
 
 		//! @brief Esse método permite que o usuário especifique o fator RH do funcionário
 		/*! 
-		 * 'frh' é do tipo char, onde é um dos seguintes: 
+		 * 'frh' é do tipo std::string, onde é um dos seguintes: 
 		 *  - A
 		 *  - B
 		 *  - AB

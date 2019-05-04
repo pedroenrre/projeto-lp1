@@ -41,16 +41,20 @@ istream& operator>> (istream &i, Veterinario &t) {
 			i >> t.idade;
 			break;
 
-		case 5:
-			cout << "\nINSERIR TIPO SANGUINEO: ";
-			i >> t.tipo_sanguineo;
+		case 5: {
+			cout << "\nINSERIR TIPO SANGUINEO [A/B/AB/O]: ";
+			string ts;
+			i >> ts;
+			t.setTipo_sanguineo(ts);
 			break;
-
-		case 6:
-			cout << "\nINSERIR FATOR RH: ";
-			i >> t.fator_rh;
+		}
+		case 6: {
+			cout << "\nINSERIR FATOR RH: [+/-]: ";
+			char frh;
+			i >> frh;
+			t.setFatorRh(frh);
 			break;
-
+		}
 		case 7:
 			cout << "\nINSERIR ESPECIALIDADE: ";
 			i >> t.especialidade;

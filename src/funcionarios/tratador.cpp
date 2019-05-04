@@ -6,6 +6,13 @@ Tratador::Tratador(){
 	limpar();
 }
 
+void Tratador::setNivelDeSeguranca(int nds){
+	if(!((0 <= nds)&&(nds <= 2))) //Se nds não estiver entre 0 e 2
+		throw Excecao("Nível de Segurança inválido.");
+	else
+		nivel_de_seguranca = nds;
+}
+
 void Tratador::limpar(){
 	id = -1;
 	nome = "";
@@ -41,16 +48,20 @@ istream& operator>> (istream &i, Tratador &t) {
 			i >> t.idade;
 			break;
 
-		case 5:
-			cout << "\nINSERIR TIPO SANGUINEO: ";
-			i >> t.tipo_sanguineo;
+		case 5: {
+			cout << "\nINSERIR TIPO SANGUINEO [A/B/AB/O]: ";
+			string ts;
+			i >> ts;
+			t.setTipo_sanguineo(ts);
 			break;
-
-		case 6:
-			cout << "\nINSERIR FATOR RH: ";
-			i >> t.fator_rh;
+		}
+		case 6: {
+			cout << "\nINSERIR FATOR RH: [+/-]: ";
+			char frh;
+			i >> frh;
+			t.setFatorRh(frh);
 			break;
-
+		}
 		case 7:
 			cout << "\nINSERIR ESPECIALIDADE: ";
 			i >> t.especialidade;
@@ -58,7 +69,9 @@ istream& operator>> (istream &i, Tratador &t) {
 
 		case 8:
 			cout << "\nINSERIR NIVEL DE SEGURANCA: ";
-			i >> t.nivel_de_seguranca;
+			int nds;
+			i >> nds;
+			t.setNivelDeSeguranca(nds);
 			break;
 			
 		default:

@@ -1,4 +1,4 @@
-all: main.o utilitarios.o painel.o paineis.o funcionario.o tratador.o veterinario.o cadastrar.o
+all: main.o excecao.o utilitarios.o painel.o paineis.o funcionario.o tratador.o veterinario.o cadastrar.o
 	g++ -Wall -ansi -pedantic -o ./bin/program.out ./build/*.o
 
 main.o:
@@ -6,6 +6,9 @@ main.o:
 
 utilitarios.o:
 	g++ -c ./src/utilitarios.cpp -I ./include -o ./build/utilitarios.o
+
+excecao.o:
+	g++ -c ./src/excecao.cpp -I ./include -o ./build/excecao.o
 
 painel.o:
 	g++ -c ./src/painel.cpp -I ./include -o ./build/painel.o
