@@ -2,7 +2,6 @@
 #define __TRATADOR_H__
 
 #include <funcionarios/funcionario.h>
-#include <iostream>
 
 /// Classe Tratador
 /**
@@ -69,6 +68,7 @@ class Tratador : public Funcionario {
 		
 		friend std::istream& operator>> (std::istream &i, Tratador &t);
 		friend std::ostream& operator<< (std::ostream &o, Tratador const t);
+		bool inserirCSV(std::string enderecoArquivo);
 		
 		///@}
 };

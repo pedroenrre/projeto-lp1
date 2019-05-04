@@ -1,6 +1,8 @@
 #ifndef __FUNCIONARIO_H__
 #define __FUNCIONARIO_H__
 
+#include <iostream>
+#include <fstream>
 #include <string>
 #include "utilitarios.h"
 
@@ -107,6 +109,8 @@ class Funcionario{
 		///@}
 
 		virtual void limpar() = 0;
+		virtual bool inserirCSV(std::string enderecoArquivo) = 0;
+
 };
 
 #endif // __FUNCIONARIO_H__

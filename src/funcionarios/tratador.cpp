@@ -81,3 +81,21 @@ ostream& operator<< (ostream &o, Tratador const t) {
 	o << "\tNível de segurança: " << (t.nivel_de_seguranca != -1 ? intParaString(t.nivel_de_seguranca) : "") << endl;
 	return o;
 }
+
+bool Tratador::inserirCSV(string enderecoArquivo){
+	ofstream of;
+	of.open(enderecoArquivo, ios::app);
+	
+	of << id << ";";
+	of << "Tratador" << ";";
+	of << nome << ";";
+	of << cpf << ";";
+	of << idade << ";";
+	of << tipo_sanguineo << ";";
+	of << fator_rh << ";";
+	of << especialidade << ";";
+	of << ";";
+	of << nivel_de_seguranca << ";";
+	of << endl;
+	return true;
+}

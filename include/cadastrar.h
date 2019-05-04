@@ -23,6 +23,7 @@ std::string cadastrar(std::deque<std::string> caminho){
 	std::cin >> continuar;
 
 	if(continuar == "s"){
+		classe.inserirCSV("csv/funcionarios.csv");
 		return "Cadastrado com sucesso.";
 	} else {
 		return "Não foi cadastrado com sucesso.";

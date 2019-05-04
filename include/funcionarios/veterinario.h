@@ -54,6 +54,7 @@ class Veterinario : public Funcionario {
 		
 		friend std::istream& operator>> (std::istream &i, Veterinario &v);
 		friend std::ostream& operator<< (std::ostream &o, Veterinario const v);
+		bool inserirCSV(std::string enderecoArquivo);
 		
 		///@}
 };
