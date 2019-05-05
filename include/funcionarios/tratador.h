@@ -18,6 +18,27 @@ class Tratador : public Funcionario {
 		//! @brief Construtor padrão seta os valores nulos da função limpar()
 		//! @see limpar()
 		Tratador();
+
+		//! @brief Esse construtor instancia o veterionario com os valores de uma linha de um arquivo CSV
+		/**
+		 * @code
+		 * 	// EXEMPLO:
+		 * 	Tratador t("1;Tratador;João Alberto;007.404.200-98;45;AB;-;Répteis e Aves;;1;");
+		 * 	cout << t;
+		 * 
+		 * 	// SAÍDA:
+		 * 	Id: 1
+		 * 	Nome: João Alberto
+		 * 	CPF: 007.404.200-98
+		 * 	Idade: 45
+		 * 	Tipo sanguíneo: AB
+		 * 	Fator RH: -
+		 * 	Especialidade: Répteis e Aves
+		 * 	Nível de segurança: 1
+		 * @endcode
+		*/
+		//! @param linhaCSV linha do arquivo CSV
+		Tratador(std::string linhaCSV);
 		
 		///@}
 		///@name Métodos getters

@@ -6,6 +6,24 @@ Tratador::Tratador(){
 	limpar();
 }
 
+Tratador::Tratador(string linhaCSV){
+	
+	// linhaCSV = "1;Tratador;João Alberto;007.404.200-98;45;AB;-;Répteis e Aves;;1;"
+	string tmp;
+	istringstream tratadorStream(linhaCSV);
+	
+	getline(tratadorStream, tmp, ';'); istringstream(tmp) >> id;
+	getline(tratadorStream, tmp, ';');
+	getline(tratadorStream, nome, ';');
+	getline(tratadorStream, cpf, ';');
+	getline(tratadorStream, tmp, ';'); istringstream(tmp) >> idade;
+	getline(tratadorStream, tipo_sanguineo, ';');
+	getline(tratadorStream, tmp, ';'); istringstream(tmp) >> fator_rh;
+	getline(tratadorStream, especialidade, ';'); 
+	getline(tratadorStream, tmp, ';'); 
+	getline(tratadorStream, tmp, ';'); istringstream(tmp) >> nivel_de_seguranca;
+}
+
 void Tratador::setNivelDeSeguranca(int nds){
 	if(!((0 <= nds)&&(nds <= 2))) //Se nds não estiver entre 0 e 2
 		throw Excecao("Nível de Segurança inválido.");

@@ -16,6 +16,27 @@ class Veterinario : public Funcionario {
 		//! @see limpar()
 		Veterinario();
 
+		//! @brief Esse construtor instancia o veterionario com os valores de uma linha de um arquivo CSV
+		/**
+		 * @code
+		 * 	// EXEMPLO:
+		 * 	Veterinario v("2;Veterinario;Daniel Oscar;123.456.789-10;30;O;+;Felinos;CRMV-GO 0406;;");
+		 * 	cout << v;
+		 * 
+		 * 	// SAÍDA:
+		 * 	Id: 2
+		 * 	Nome: Daniel Oscar
+		 * 	CPF: 123.456.789-10
+		 * 	Idade: 30
+		 * 	Tipo sanguíneo: O
+		 * 	Fator RH: +
+		 * 	Especialidade: Felinos
+		 * 	CRMV: CRMV-GO 0406
+		 * @endcode
+		*/
+		//! @param linhaCSV linha do arquivo CSV
+		Veterinario(std::string linhaCSV);
+
 		///@}
 		///@name Métodos getters
 		///@{

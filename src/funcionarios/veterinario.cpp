@@ -6,6 +6,24 @@ Veterinario::Veterinario(){
 	limpar();
 }
 
+Veterinario::Veterinario(string linhaCSV){
+	
+	// linhaCSV = "1;Tratador;João Alberto;007.404.200-98;45;AB;-;Répteis e Aves;;1;"
+	string tmp;
+	istringstream tratadorStream(linhaCSV);
+	
+	getline(tratadorStream, tmp, ';'); istringstream(tmp) >> id;
+	getline(tratadorStream, tmp, ';');
+	getline(tratadorStream, nome, ';');
+	getline(tratadorStream, cpf, ';');
+	getline(tratadorStream, tmp, ';'); istringstream(tmp) >> idade;
+	getline(tratadorStream, tipo_sanguineo, ';');
+	getline(tratadorStream, tmp, ';'); istringstream(tmp) >> fator_rh;
+	getline(tratadorStream, especialidade, ';'); 
+	getline(tratadorStream, crmv, ';'); 
+	getline(tratadorStream, tmp, ';');
+}
+
 void Veterinario::limpar(){
 	id = -1;
 	nome = "";

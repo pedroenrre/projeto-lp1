@@ -6,8 +6,11 @@ void painelPrincipal(){
 	deque<string> caminho;
 	caminho.push_back("GERENCIAR");
 	string titulo = "GERENCIAR";
-	string vetor_opcoes[] = {"SAIR", "ANIMAIS", "FUNCIONÁRIOS"};
-	vector<string> opcoes(vetor_opcoes, vetor_opcoes + sizeof(vetor_opcoes) / sizeof(string));
+	vector<string> opcoes;
+	opcoes.push_back("SAIR");
+	opcoes.push_back("ANIMAIS");
+	opcoes.push_back("FUNCIONÁRIOS");
+
 	Painel gerenciar(titulo, opcoes);
 
 	while(gerenciar.getAbrir()){
@@ -16,6 +19,7 @@ void painelPrincipal(){
 
 		if(opcao == "1"){
 			painelAnimais(caminho);
+
 		} else if(opcao == "2"){
 			painelFuncionarios(caminho);
 		}
@@ -25,10 +29,15 @@ void painelPrincipal(){
 void painelAnimais(deque<string> caminho){
 	caminho.push_back("ANIMAIS");
 	string titulo = "ANIMAIS";
-	string vetor_opcoes[] = {"VOLTAR", "CADASTRAR", "REMOVER", "ALTERAR", "CONSULTAR"};
-	vector<string> opcoes(vetor_opcoes, vetor_opcoes + sizeof(vetor_opcoes) / sizeof(string));
+	vector<string> opcoes;
+	opcoes.push_back("VOLTAR");
+	opcoes.push_back("CADASTRAR");
+	opcoes.push_back("REMOVER");
+	opcoes.push_back("ALTERAR");
+	opcoes.push_back("CONSULTAR");
+
 	Painel animais(titulo, opcoes, caminho);
-	
+
 	while(animais.getAbrir()){
 		animais.printPainel();
 		string opcao = animais.getSelecao();
@@ -80,8 +89,11 @@ void painelAnimaisConsulta(deque<string> caminho){
 void painelFuncionarios(deque<string> caminho){
 	caminho.push_back("FUNCIONÁRIOS");
 	string titulo = "FUNCIONÁRIOS";
-	string vetor_opcoes[] = {"VOLTAR", "TRATADOR", "VETERINÁRIO"};
-	vector<string> opcoes(vetor_opcoes, vetor_opcoes + sizeof(vetor_opcoes) / sizeof(string));
+	vector<string> opcoes;
+	opcoes.push_back("VOLTAR");
+	opcoes.push_back("TRATADORES");
+	opcoes.push_back("VETERINÁRIOS");
+
 	Painel funcionarios(titulo, opcoes, caminho);	
 
 	while(funcionarios.getAbrir()){

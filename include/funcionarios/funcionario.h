@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <string>
 
 #include "excecao.h"
@@ -15,7 +16,7 @@ class Funcionario{
 		std::string nome; ///< Nome do funcionário
 		std::string cpf; ///< CPF do funcionário
 		short idade; ///< Idade do funcionário
-		std::string tipo_sanguineo; ///< Tipo sanguíneo é uma cadeia de caracteres
+		std::string tipo_sanguineo; ///< Tipo sanguíneo do funcionário
 		char fator_rh; ///< Fator RH do funcionario
 		std::string especialidade; ///< Especialidade do funcionário
 		int contador_cin; ///< Contador de chamadas do operador de inserção
@@ -37,16 +38,17 @@ class Funcionario{
 		//! @brief Retorna a idade do funcionário
 		short getIdade();
 
-		//! @brief Retorna o tipo sanguíneo é uma cadeia de caracteres
+		//! @brief Retorna o tipo sanguíneo do funcionário
 		std::string getTipo_sanguineo();
 
-		//! @brief Retorna o tipo sanguíneo do funcionario
+		//! @brief Retorna o Fator RH do funcionário
 		char getFator_rh();
 
 		//! @brief Retorna a especialidade do funcionário
 		std::string getEspecialidade();
 
-		//! @brief Retorna a quantidade de vezes que o operador de inserção da classe foi chamado
+		//! @brief Retorna a quantidade de chamadas do operador de inserção da classe
+		//! @noe Útil para saber quais atributos já foram definidos ou não
 		int getContadorCin();
 		
 		///@}

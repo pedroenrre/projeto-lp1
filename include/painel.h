@@ -42,7 +42,7 @@ class Painel{
 		//~Painel();
 
 		///@}
-		///@name Métodos getters
+		///@name Getters
 		///@{
 		
 		//! @brief Retorna o título do painel
@@ -67,7 +67,7 @@ class Painel{
 		bool getAbrir();
 
 		///@}
-		///@name Métodos setters
+		///@name Setters
 		///@{
 
 		//! @brief Esse método permite que o usuário especifique o título do painel

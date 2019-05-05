@@ -2,122 +2,131 @@
 #define __ANIMAL_H__
 
 #include <string>
-#include <veterinario.h>
-#include <tratador.h>
+#include <funcionarios/veterinario.h>
+#include <funcionarios/tratador.h>
 
 /// Classe Animal
 /** 
  * Conjunto de atributos comuns a todos os animais da Pet Fera.
  */
 class Animal{
+	protected:
+		int id; ///< Identificador do animal
+		std::string classe; ///< Classe do animal
+		std::string nome_cientifico; ///< Nome científico do animal
+		char sexo; ///< Sexo do animal
+		double tamanho; ///< Tamanho médio em metros do animal
+		std::string dieta; ///< Dieta predominante
+		Veterinario veterinario; ///< Veterinário associado ao animal					 
+		Tratador tratador; ///< Tratador associado ao animal			   
+		std::string nome_batismo; ///< Nome de batismo do animal
+
 	public:
-		/// Construtor de Animal com parâmetros.
-		/**
-		*  Detailed description starts here.
-		*/
+		///@name Construtores e destrutor
+		///@{
+
+		//! @brief Construtor de Animal com parâmetros.
 		Animal(int cod, std::string clas);
-		/// Construtor de Animal sem parâmetros.
-		/**
-		*  Detailed description starts here.
-		*/
+		
+		//! @brief Construtor de Animal sem parâmetros.
 		Animal();
-		/// Destrutor de Animal.
-		/**
-		*  A more elaborate description of the destructor.
-		*/
+
+		//! @brief Destrutor de Animal.
 		~Animal();
+
+		///@}
 		///@name Getters
 		///@{
 		//! @brief Médotos para acessar atributos protegidos.
 		
 		//! @brief Médoto para pegar o atributo protegido id
-		int Animal::getId();
+		int getId();
+		
 		//! @brief Médoto para pegar o atributo protegido classe
-		std::string Animal::getClasse();
+		std::string getClasse();
+		
 		//! @brief Médoto para pegar o atributo protegido nome_cientifico
-		std::string Animal::getNome_Cientifico();
+		std::string getNome_Cientifico();
+		
 		//! @brief Médoto para pegar o atributo protegido sexo
-		char Animal::getSexo();
+		char getSexo();
+		
 		//! @brief Médoto para pegar o atributo protegido tamanho
-		double Animal::getTamanho();
+		double getTamanho();
+		
 		//! @brief Médoto para pegar o atributo protegido dieta
-		std::string Animal::getDieta();
+		std::string getDieta();
+		
 		//! @brief Médoto para pegar o atributo protegido veterinario
-		Veterinario Animal::getVeterinario();
+		Veterinario getVeterinario();
+		
 		//! @brief Médoto para pegar o atributo protegido tratador
-		Tratador Animal::getTratador();
+		Tratador getTratador();
+		
 		//! @brief Médoto para pegar o atributo protegido nome_batismo
-		std::string Animal::getNome_Batismo();
+		std::string getNome_Batismo();
 		
 		
 		///@}
-		
 		///@name Setters
 		///@{
 		//! @brief Médotos para acessar atributos protegidos.
 		
 		//! @brief Médoto para setar o atributo protegido id
 		//! @param id identificador do Animal
-		void Animal::setId(int id);
+		void setId(int id);
+
 		//! @brief Médoto para setar o atributo protegido class
+		/**
+		 * String, onde é uma das seguintes: 
+		 *  - *Amphibia* (anfíbio)
+		 *  - *Reptilia* (réptil)
+		 *  - *Aves* (ave)
+		 *  - *Mammalia* (mamífero)
+		 */
 		//! @param clas classe do Animal
-		void Animal::setClasse(std::string clas);
+		void setClasse(std::string clas);
+
 		//! @brief Médoto para setar o atributo protegido nome_cientifico
 		//! @param cientific_name nome científico do Animal
-		void Animal::setNome_Cientifico(std::string cientific_name);
+		void setNome_Cientifico(std::string cientific_name);
+
 		//! @brief Médoto para setar o atributo protegido sexo
+		/**
+		* Sexo é um dos seguintes:
+		*  - M (macho)
+		*  - F (fêmea)
+		*/
 		//! @param gender sexo do Animal
-		void Animal::setSexo(char gender);
+		void setSexo(char gender);
+
 		//! @brief Médoto para setar o atributo protegido tamanho
 		//! @param size tamanho do Animal
-		void Animal::setTamanho(double size);
+		void setTamanho(double size);
+
 		//! @brief Médoto para setar o atributo protegido dieta
 		//! @param diet diete do Animal
-		void Animal::setDieta(std::string diet);
-		//! @brief Médoto para setar o atributo protegido veterinario
-		//! @param vet veterinario do Animal
-		void Animal::setVeterinario(Veterinario vet);
+		void setDieta(std::string diet);
+
+		//! @brief Médoto para setar o veterinario associado ao animal
+		/**
+		 * Onde @b idVeterinario é um dos seguintes:
+		 *  - 0 (indica que não há veterinário associado)
+		 *  - maior ou igual a 1 (indica o id do veterinário associado a esse animal)
+		 */
+		//! @exception Caso não exista veterinário com o id informado.
+		//! @param idVeterinario id do veterinário
+		void setVeterinario(int idVeterinario);
+
 		//! @brief Médoto para setar o atributo protegido tratador
 		//! @param caregiver tratador do Animal
-		void Animal::setTratador(Tratador caregiver);
+		void setTratador(Tratador caregiver);
+
 		//! @brief Médoto para setar o atributo protegido nome_batismo
 		//! @param baptismo_name nome de batismo do Animal
-		void Animal::setNome_Batismo(std::string baptism_name);
+		void setNome_Batismo(std::string baptism_name);
 		
 		///@}
-	protected:
-		int id; ///< Identificador do animal
-		std::string classe; ///< Classe do animal
-							/**< 
-							 * String, onde é uma das seguintes: 
-							 *  - *Amphibia* (anfíbio)
-							 *  - *Reptilia* (réptil)
-							 *  - *Aves* (ave)
-							 *  - *Mammalia* (mamífero)
-							 */
-		std::string nome_cientifico; ///< Nome científico do animal
-		char sexo; ///< Classe do animal
-				   /**<
-					* Caractere, onde é um dos seguintes:
-					*  - M (macho)
-					*  - F (fêmea)
-				    */
-		double tamanho; ///< Tamanho médio em metros do animal
-		std::string dieta; ///< Dieta predominante
-		Veterinario veterinario; ///< Veterinário associado ao animal
-								 /**<
-								  * veterinario.getId(), onde é um dos seguintes:
-								  *  - 0 (o valor zero indica que não há veterinário associado)
-								  *  - maior ou igual a 1
-								 */
-		Tratador tratador; ///< Tratador associado ao animal
-						   /**<
-							* tratador.getId(), onde é um dos seguintes:
-							*  - 0 (o valor zero indica que não há tratador responsável)
-							*  - maior ou igual a 1
-							*/
-		std::string nome_batismo; ///< Nome de batismo do animal
-
 };
 
 #endif // __ANIMAL_H__

@@ -16,14 +16,16 @@ void painelPrincipal();
 void painelAnimais(std::deque<std::string> caminho);
 void painelAnimaisConsulta(std::deque<std::string> caminho);
 void painelFuncionarios(std::deque<std::string> caminho);
-void painelTratadores(std::deque<std::string> caminho);
-void painelVeterinarios(std::deque<std::string> caminho);
 
 template <typename FUNCIONARIO>
 void painelFuncionarios(std::string titulo, std::deque<std::string> caminho){
 	caminho.push_back(titulo);
-	std::string vetor_opcoes[] = {"VOLTAR", "CADASTRAR", "REMOVER", "ALTERAR", "CONSULTAR"};
-	std::vector<std::string> opcoes(vetor_opcoes, vetor_opcoes + sizeof(vetor_opcoes) / sizeof(std::string));
+	std::vector<std::string> opcoes;
+	opcoes.push_back("VOLTAR");
+	opcoes.push_back("CADASTRAR");
+	opcoes.push_back("REMOVER");
+	opcoes.push_back("ALTERAR");
+	opcoes.push_back("CONSULTAR");
 	
 	Painel painel(titulo, opcoes, caminho);
 	
