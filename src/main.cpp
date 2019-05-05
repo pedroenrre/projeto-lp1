@@ -16,7 +16,6 @@
  * 
  */
 
-#include <painel.h>
 #include <paineis.h>
 
 using namespace std;

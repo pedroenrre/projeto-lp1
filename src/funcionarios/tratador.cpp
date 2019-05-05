@@ -68,7 +68,7 @@ istream& operator>> (istream &i, Tratador &t) {
 			break;
 
 		case 8:
-			cout << "\nINSERIR NIVEL DE SEGURANCA: ";
+			cout << "\nINSERIR NIVEL DE SEGURANCA [0/1/2]: ";
 			int nds;
 			i >> nds;
 			t.setNivelDeSeguranca(nds);
@@ -95,20 +95,24 @@ ostream& operator<< (ostream &o, Tratador const t) {
 	return o;
 }
 
-bool Tratador::inserirCSV(string enderecoArquivo){
+void Tratador::inserirCSV(string enderecoArquivo){
+	
 	ofstream of;
 	of.open(enderecoArquivo, ios::app);
-	
-	of << id << ";";
-	of << "Tratador" << ";";
-	of << nome << ";";
-	of << cpf << ";";
-	of << idade << ";";
-	of << tipo_sanguineo << ";";
-	of << fator_rh << ";";
-	of << especialidade << ";";
-	of << ";";
-	of << nivel_de_seguranca << ";";
-	of << endl;
-	return true;
+
+	if(of.is_open()){
+		of << id << ";";
+		of << "Tratador" << ";";
+		of << nome << ";";
+		of << cpf << ";";
+		of << idade << ";";
+		of << tipo_sanguineo << ";";
+		of << fator_rh << ";";
+		of << especialidade << ";";
+		of << ";";
+		of << nivel_de_seguranca << ";";
+		of << endl;
+	} else {
+		throw Excecao("Erro ao abrir arquivo para cadastro.");
+	}
 }
