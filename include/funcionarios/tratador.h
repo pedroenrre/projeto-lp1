@@ -3,38 +3,27 @@
 
 #include <funcionarios/funcionario.h>
 
-/// Classe Tratador
+/// Essa classe representa o funcionario que possui um 'nivel de segurança' para tratar os animais.
 /**
- * O Tratador é um Funcionario que deve estar vinculado aos animais para cuidados diários,
- * caso tenha o nível de segurança apropriado e a espécie do animal esteja catalogada em
- * uma das listas oficiais do IBAMA.
- * 
- * As espécies catalogadas em listas oficiais do IBAMA:
- *  - **Animais silvestres nativos**: mico, morcego, quati, onça, tamanduá, ema,
- *    papagaio, arara, canário-da-terra, tico-tico, galo-da-campina, teiú, etc.
- *  - **Animais silvestres exoticos**: leão, zebra, elefante, urso, *ferret*,
- *    lebre-européia, javali, crocodilo-do-Nilo, naja, tartaruga-de orelha-vermelha,
- *    cacatua, entre outros.
- *  - **Animais ameaçadas de extinção**: araraju, arara azul, ariranha, baleia-franco-do-sul,
- *    cervo-do-pantanal, gato-macarajá, lobo-guará, macaco-aranha, mico-leão-dourado,
- *    onça-pintada, tamanduá-bandeira, etc.
+ * Nível de segurança representa o grau de experiência do tratador na manipulação de certos animais.
  */
 class Tratador : public Funcionario {
 	private:
 		int nivel_de_seguranca; ///< Indica quais animais o tratador pode tratar.
 
 	public:
-		///@name Construtores e destrutor
+		///@name Construtor e destrutor
 		///@{
 		
-		//! @brief Construtor padrão
+		//! @brief Construtor padrão seta os valores nulos da função limpar()
+		//! @see limpar()
 		Tratador();
 		
 		///@}
 		///@name Métodos getters
 		///@{
 		
-		//! @brief Retorna o nível de segurança do tratador.
+		//! @brief Retorna o 'nível de segurança' do tratador.
 		/*!
 		 * O nivel de segurança é um inteiro[0, 2], onde:
 		 *  - 0 (indica que pode manipular aves)
@@ -48,7 +37,7 @@ class Tratador : public Funcionario {
 		///@name Métodos setters
 		///@{
 		
-		//! @brief Esse método permite que o usuário especifique o nível de segurança do tratador
+		//! @brief Seta o 'nível de segurança' do tratador
 		/*!
 		 * O nivel de segurança é um inteiro[0, 2], onde:
 		 *  - 0 (indica que pode manipular aves)
@@ -60,15 +49,37 @@ class Tratador : public Funcionario {
 		void setNivelDeSeguranca(int nds);
 		
 		///@}
-		///@name Métodos setters
+		///@name Métodos
 		///@{
 		
-		//! @brief Esse método permite que o usuário especifique o nível de segurança do tratador
+		//! @brief Seta 'espaço' em todos os atributos do tipo string e '-1' em todos os de tipo numérico
+		//! @note Ajuda na hora de imprimir a classe na tela, mesmo que não tenha todos os atributos já definidos.
+		//! @see operator<<()
 		void limpar();
 		
+		//! @brief Operador de inserção da classe. Só insere um atributo por vez.
+		/**
+		 * Por exemplo:
+		 * @code
+		 * Tratador t;
+		 * cin >> t;	// 1a chamada: Insere no t.id
+		 * cin >> t;	// 2a chamada: Insere no t.nome
+		 * cin >> t;	// 3a chamada: Insere no t.cpf
+		 * cin >> t;	// 4a chamada: Insere no t.idade
+		 * cin >> t;	// ...
+		 * cin >> t;	// 8a chamada: Insere no t.nivel_de_seguranca
+		 * @endcode
+		 * @see setContadorCin()
+		 */
 		friend std::istream& operator>> (std::istream &i, Tratador &t);
+
+		//! @brief Operador de extração da classe.
 		friend std::ostream& operator<< (std::ostream &o, Tratador const t);
-		bool inserirCSV(std::string enderecoArquivo);
+
+		//! @brief Grava no arquivo CSV informado, 'todos os valores da classe'
+		//! @exception "Erro ao abrir arquivo para cadastro." caso o arquivo não exista ou haja alguma falha de execução
+		//! @param enderecoArquivo endereco do arquivo CSV
+		void inserirCSV(std::string enderecoArquivo);
 		
 		///@}
 };

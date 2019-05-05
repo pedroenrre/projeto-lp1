@@ -8,10 +8,7 @@
 #include "excecao.h"
 #include "utilitarios.h"
 
-/// Classe Funcionario
-/** 
- * Conjunto de atributos comuns a todos os funcionarios da Pet Fera.
- */
+/// Classe abstrata que possui o conjunto de atributos comuns a todos os funcionarios da Pet Fera.
 class Funcionario{
 	protected:
 		int id; ///< Identificador do funcionário
@@ -21,20 +18,9 @@ class Funcionario{
 		std::string tipo_sanguineo; ///< Tipo sanguíneo é uma cadeia de caracteres
 		char fator_rh; ///< Fator RH do funcionario
 		std::string especialidade; ///< Especialidade do funcionário
-		int contador_cin;
+		int contador_cin; ///< Contador de chamadas do operador de inserção
 
 	public:
-		///@name Contrutores e destrutor
-		///@{
- 
-		//! @brief Construtor de Funcionario com título e vector de opções.
-		//! @param t Título do painel
-		//! @param o Vector de opções
-		Funcionario();
-		
-		// Destrutor de Funcionario
-		//~Funcionario();
-
 		///@}
 		///@name Métodos getters
 		///@{
@@ -60,59 +46,73 @@ class Funcionario{
 		//! @brief Retorna a especialidade do funcionário
 		std::string getEspecialidade();
 
+		//! @brief Retorna a quantidade de vezes que o operador de inserção da classe foi chamado
 		int getContadorCin();
 		
 		///@}
 		///@name Métodos setters
 		///@{
 
-		//! @brief Esse método permite que o usuário especifique o identificador do funcionário
+		//! @brief Seta o 'identificador do funcionário'
 		//! @param i identificador do funcionário
 		void setId(int i);
 
-		//! @brief Esse método permite que o usuário especifique o nome do funcionário
+		//! @brief Seta o 'nome do funcionário'
 		//! @param n nome do funcionário
 		void setNome(std::string n);
 
-		//! @brief Esse método permite que o usuário especifique o CPF do funcionário
+		//! @brief Seta o 'CPF do funcionário'
 		//! @param c CPF do funcionário
 		void setCpf(std::string c);
 
-		//! @brief Esse método permite que o usuário especifique a idade do funcionário
+		//! @brief Seta a 'idade do funcionário'
 		//! @param i idade do funcionário
 		void setIdade(short i);
 
-		//! @brief Esse método permite que o usuário especifique o tipo sanguíneo do funcionário.
+		//! @brief Seta o 'tipo sanguíneo do funcionário'.
 		/*! 
 		 * 'ts' é do tipo char, onde é um dos seguintes:
 		 *  - +
 		 *  - -
 		 */
+		//! @exception "Fator RH inválido." caso não seja uma das anteriores.
 		//! @param ts tipo sanguíneo do funcionário
 		void setTipo_sanguineo(std::string ts);
 
-		//! @brief Esse método permite que o usuário especifique o fator RH do funcionário
+		//! @brief Seta o 'fator RH do funcionário'
 		/*! 
-		 * 'frh' é do tipo std::string, onde é um dos seguintes: 
+		 * 'frh' é do tipo string, onde é um dos seguintes: 
 		 *  - A
 		 *  - B
 		 *  - AB
 		 *  - O 
 		 */
+		//! @exception "Tipo sanguíneo inválido." caso não seja uma das anteriores.
 		//! @param frh fator RH do funcionário
 		void setFatorRh(char frh);
 
-		//! @brief Esse método permite que o usuário especifique o especialidade do funcionário
+		//! @brief Seta a 'especialidade do funcionário'
 		//! @param e especialidade do funcionário
 		void setEspecialidade(std::string e);
 
+		//! @brief Seta um 'valor' no contador de chamadas do operador de inserção da classe
+		//! @param c valor
 		void setContadorCin(int c);
 
 		///@}
+		///@name Métodos
+		///@{
 
+		//! @brief Seta 'espaço em branco' em todos os atributos do tipo string e '-1' em todos os de tipo numérico
 		virtual void limpar() = 0;
-		virtual bool inserirCSV(std::string enderecoArquivo) = 0;
 
+		//! @brief Grava no arquivo CSV informado, 'todos os valores da classe'
+		//! @exception "Erro ao abrir arquivo para cadastro." caso o arquivo não exista ou haja alguma falha de execução
+		//! @param enderecoArquivo endereco do arquivo CSV
+		virtual void inserirCSV(std::string enderecoArquivo) = 0;
+
+		///@}
+		
 };
 
 #endif // __FUNCIONARIO_H__

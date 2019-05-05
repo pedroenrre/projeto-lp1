@@ -87,20 +87,24 @@ ostream& operator<< (ostream &o, Veterinario const t) {
 }
 
 
-bool Veterinario::inserirCSV(string enderecoArquivo){
+void Veterinario::inserirCSV(string enderecoArquivo){
+
 	ofstream of;
 	of.open(enderecoArquivo, ios::app);
-	
-	of << id << ";";
-	of << "Veterinário" << ";";
-	of << nome << ";";
-	of << cpf << ";";
-	of << idade << ";";
-	of << tipo_sanguineo << ";";
-	of << fator_rh << ";";
-	of << especialidade << ";";
-	of << crmv << ";";
-	of << ";";
-	of << endl;
-	return true;
+
+	if(of.is_open()){
+		of << id << ";";
+		of << "Veterinário" << ";";
+		of << nome << ";";
+		of << cpf << ";";
+		of << idade << ";";
+		of << tipo_sanguineo << ";";
+		of << fator_rh << ";";
+		of << especialidade << ";";
+		of << crmv << ";";
+		of << ";";
+		of << endl;
+	} else {
+		throw Excecao("Erro ao abrir arquivo para cadastro.");
+	}
 }

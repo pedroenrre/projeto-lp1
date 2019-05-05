@@ -2,8 +2,6 @@
 
 using namespace std;
 
-Funcionario::Funcionario(){}
-
 int Funcionario::getContadorCin(){
 	return contador_cin;
 }
