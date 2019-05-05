@@ -2,6 +2,7 @@
 #define __CADASTRAR_H__
 
 #include "excecao.h"
+#include "painel.h"
 #include "utilitarios.h"
 
 template <typename C>

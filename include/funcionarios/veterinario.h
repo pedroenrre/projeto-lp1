@@ -16,7 +16,7 @@ class Veterinario : public Funcionario {
 		//! @see limpar()
 		Veterinario();
 
-		//! @brief Esse construtor instancia o veterionario com os valores de uma linha de um arquivo CSV
+		//! @brief Esse construtor instancia o veterinário com os valores de uma linha de um arquivo CSV
 		/**
 		 * @code
 		 * 	// EXEMPLO:

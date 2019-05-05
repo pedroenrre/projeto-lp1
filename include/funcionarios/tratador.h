@@ -19,7 +19,7 @@ class Tratador : public Funcionario {
 		//! @see limpar()
 		Tratador();
 
-		//! @brief Esse construtor instancia o veterionario com os valores de uma linha de um arquivo CSV
+		//! @brief Esse construtor instancia o tratador com os valores de uma linha de um arquivo CSV
 		/**
 		 * @code
 		 * 	// EXEMPLO:

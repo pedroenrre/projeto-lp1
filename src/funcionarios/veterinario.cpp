@@ -112,7 +112,7 @@ void Veterinario::inserirCSV(string enderecoArquivo){
 
 	if(of.is_open()){
 		of << id << ";";
-		of << "Veterinário" << ";";
+		of << "Veterinario" << ";";
 		of << nome << ";";
 		of << cpf << ";";
 		of << idade << ";";

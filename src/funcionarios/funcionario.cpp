@@ -2,6 +2,10 @@
 
 using namespace std;
 
+int Funcionario::getId(){
+	return id;
+}
+
 int Funcionario::getContadorCin(){
 	return contador_cin;
 }

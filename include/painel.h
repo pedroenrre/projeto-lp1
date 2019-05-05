@@ -9,6 +9,9 @@
 
 #include <utilitarios.h>
 
+void printCabecalho(std::string titulo, std::deque<std::string> caminho);
+void printCaminho(std::deque<std::string> caminho);
+
 /// Responsável por gerar um painel de controle a partir de um vector de strings
 /** 
  * 
