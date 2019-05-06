@@ -10,12 +10,45 @@ template <typename C>
 void consultar(MapFuncionarios<C> map, std::deque<std::string> caminho){
     
 	Excecao excecao;
-	printPainelConsultar(map, caminho, excecao);
+    int selecao;
 
-    std::string selecao;
-    std::cout << "\nSELECIONE O FUNCIONARIO PELO ID: ";
-    std::cin >> selecao;
+    while (selecao != 0){
+        try{
+            printPainelConsultar(map, caminho, excecao);
+            std::cin >> selecao;
+            printFuncionario(selecao, map, caminho, excecao);
+        
+            // Tratamento de erro, caso o usuário insira texto em vez de números        
 
+        } catch(Excecao &e){
+            std::string msg = e.getMensagem();
+            excecao.setMensagem(msg);
+        }
+    }
+    
+   
+}
+
+template <typename C>
+void printFuncionario(int id, MapFuncionarios<C> map, std::deque<std::string> caminho, Excecao &excecao){
+
+    auto it = map.funcionarios.find(id);
+
+    if(it == map.funcionarios.end()){
+        throw Excecao("O id informado é inválido. Tente novamente."); 
+    }
+    else{
+        caminho.push_back("DETALHES");
+        printCabecalho("DETALHES", caminho);
+        std::cout << it->second;
+        excecao.printMensagem();
+	    excecao.limparMensagem();
+        std::string selecao;
+        std::cout << "\n\t0. VOLTAR\n";
+        std::cout << "\nVOLTAR: ";
+        std::cin >> selecao;
+        caminho.pop_back();
+    }
 }
 
 template <typename C>
@@ -25,7 +58,8 @@ void printPainelConsultar(MapFuncionarios<C> map, std::deque<std::string> caminh
     map.print();
 	excecao.printMensagem();
 	excecao.limparMensagem();
-
+    std::cout << "\n\t0. VOLTAR\n";
+    std::cout << "\nSELECIONE O FUNCIONARIO PELO ID: ";
 }
 
 #endif // __CONSULTAR_H__

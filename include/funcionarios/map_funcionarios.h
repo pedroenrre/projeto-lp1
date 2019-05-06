@@ -14,10 +14,11 @@
  */
 template<class FUNCIONARIO>
 class MapFuncionarios {
-	private:
+	public:
+//	private:
 		std::map<int, FUNCIONARIO> funcionarios; ///< Lista de tratadores
 
-	public:
+//	public:
 		///@name Construtores e destrutor
 		///@{
 		
@@ -83,7 +84,7 @@ void MapFuncionarios<FUNCIONARIO>::print(){
 
     for (auto it = funcionarios.begin(); it != funcionarios.end(); ++it){
         std::cout << "\t" << it->second.getId();
-        std::cout << " " << it->second.getNome() << std::endl;
+        std::cout << ". " << it->second.getNome() << std::endl;
     }
 }
 
