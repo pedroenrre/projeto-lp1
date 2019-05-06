@@ -134,3 +134,7 @@ void Tratador::inserirCSV(string enderecoArquivo){
 		throw Excecao("Erro ao abrir arquivo para cadastro.");
 	}
 }
+
+string Tratador::getTipo(){
+	return "Tratador";
+}

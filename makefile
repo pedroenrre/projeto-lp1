@@ -1,5 +1,5 @@
-all: main.o excecao.o utilitarios.o painel.o paineis.o funcionario.o tratador.o veterinario.o cadastrar.o map_funcionarios.o
-	g++ -Wall -ansi -pedantic -o ./bin/program.out ./build/*.o
+all: main.o excecao.o utilitarios.o painel.o paineis.o funcionario.o tratador.o veterinario.o cadastrar.o map_funcionarios.o consultar.o
+	g++ -Wall -ansi -pedantic -g -o ./bin/program.out ./build/*.o
 
 main.o:
 	g++ -c ./src/main.cpp -I ./include -o ./build/main.o
@@ -30,6 +30,9 @@ map_funcionarios.o:
 
 cadastrar.o:
 	g++ -c ./src/cadastrar.cpp -I ./include -o ./build/cadastrar.o
+
+consultar.o:
+	g++ -c ./src/consultar.cpp -I ./include -o ./build/consultar.o
 
 clear:
 	rm ./build/*

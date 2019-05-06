@@ -126,3 +126,7 @@ void Veterinario::inserirCSV(string enderecoArquivo){
 		throw Excecao("Erro ao abrir arquivo para cadastro.");
 	}
 }
+
+string Veterinario::getTipo(){
+	return "Veterinario";
+}

@@ -102,6 +102,8 @@ class Tratador : public Funcionario {
 		//! @param enderecoArquivo endereco do arquivo CSV
 		void inserirCSV(std::string enderecoArquivo);
 		
+		std::string getTipo();
+
 		///@}
 };
 

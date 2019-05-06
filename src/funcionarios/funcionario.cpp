@@ -6,6 +6,10 @@ int Funcionario::getId(){
 	return id;
 }
 
+string Funcionario::getNome(){
+	return nome;
+}
+
 int Funcionario::getContadorCin(){
 	return contador_cin;
 }

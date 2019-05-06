@@ -9,6 +9,8 @@
 
 #include "painel.h"
 #include "cadastrar.h"
+#include "consultar.h"
+#include "funcionarios/map_funcionarios.h"
 #include "funcionarios/tratador.h"
 #include "funcionarios/veterinario.h"
 
@@ -46,8 +48,8 @@ void painelFuncionarios(std::string titulo, std::deque<std::string> caminho){
 			painel.setMensagem("ALTERAR");
 
 		} else if(opcao == "4"){
-			painel.setMensagem("CONSULTAR");
-
+			MapFuncionarios<FUNCIONARIO> mf("csv/funcionarios.csv");
+			consultar<FUNCIONARIO>(mf, caminho);
 		}
 	}
 }
