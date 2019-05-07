@@ -31,3 +31,8 @@ void Funcionario::setFatorRh(char frh){
 	else
 		fator_rh = frh;	
 }
+
+void Funcionario::printIdNome(){
+	cout << "\t" << id;
+    cout << ". " << nome << endl;
+}

@@ -6,10 +6,13 @@
 #include <cstring>
 #include <vector>
 #include <deque>
+#include <map>
 
 #include <utilitarios.h>
+#include <excecao.h>
 
 void printCabecalho(std::string titulo, std::deque<std::string> caminho);
+
 void printCaminho(std::deque<std::string> caminho);
 
 /// Responsável por gerar um painel de controle a partir de um vector de strings
@@ -20,11 +23,14 @@ class Painel{
 	private:
 		std::string titulo; ///< Titulo do painel
 		std::vector<std::string> opcoes; ///< Vector com opções que serão exibidas no painel
+		std::map<std::string, std::string> corpo; ///< Vector com opções que serão exibidas no painel
 		std::deque<std::string> caminho; ///< Deque com caminho de opções escolhidas até o painel atual
 		std::string mensagem; ///< Mensagem que será exibida no painel 
+		std::string pergunta; ///< 
 		std::string selecao; ///< Valor da opção selecionada
 		std::vector<std::string> opcoes_selecao; ///< Vector com primeira palavra de cada item do vector 'opcoes' em letras minúsculas
-		bool abrir; ///<
+		bool abrir; ///< Opção de controle de abertura e término do painel
+		Excecao excecao;
 
 	public:
 		///@name Contrutores e destrutor
@@ -34,12 +40,17 @@ class Painel{
 		//! @param t Título do painel
 		//! @param o Vector de opções
 		Painel(std::string t, std::vector<std::string> o);
+
+		Painel(std::string t, std::deque<std::string> c);
 		
 		//! @brief Construtor de Painel sem caminho.
 		//! @param t Título do painel
 		//! @param o Vector de opções
 		//! @param c Deque de caminho
 		Painel(std::string t, std::vector<std::string> o, std::deque<std::string> c);
+
+		Painel(std::string t, std::map<std::string, std::string> c);
+		Painel(std::string t, std::map<std::string, std::string> co, std::deque<std::string> c);
 		
 		// Destrutor de Painel
 		//~Painel();
@@ -100,6 +111,10 @@ class Painel{
 		//! @brief Esse método permite que o usuário especifique !!!
 		//! @param a !!!
 		void setAbrir(bool a);
+
+		void setPergunta(std::string p);
+
+		void setExcecao(Excecao &e);
 		
 		///@}
 		///@name Métodos
@@ -107,6 +122,9 @@ class Painel{
 
 		//! @brief Imprime o painel
 		void printPainel();
+
+		//void printCabecalho();
+		//void printCaminho();
 
 		//! @brief Verifica se a opção passada é válida
 		/*!

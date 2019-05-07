@@ -29,3 +29,8 @@ void Excecao::printMensagem(){
 	if(!mensagem.empty())
 		cout << endl << mensagem << endl;
 }
+
+Excecao& Excecao::operator= (Excecao const &e) {
+ mensagem = e.mensagem;
+ return *this;
+}

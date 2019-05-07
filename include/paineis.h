@@ -8,9 +8,8 @@
 #include <deque>
 
 #include "painel.h"
-#include "cadastrar.h"
-#include "consultar.h"
-#include "funcionarios/map_funcionarios.h"
+#include "crud/cadastrar.h"
+#include "crud/consultar.h"
 #include "funcionarios/tratador.h"
 #include "funcionarios/veterinario.h"
 
@@ -30,27 +29,31 @@ void painelFuncionarios(std::string titulo, std::deque<std::string> caminho){
 	opcoes.push_back("CONSULTAR");
 	
 	Painel painel(titulo, opcoes, caminho);
-	
+	painel.setPergunta("SELECIONE UMA DAS OPCOES");
+
 	while(painel.getAbrir()){
-		painel.printPainel();
-		std::string opcao = painel.getSelecao();
 
-		if(opcao == "1"){
-			caminho.push_back("CADASTRAR");
-			std::string msg = cadastrar<FUNCIONARIO>(caminho);
-			painel.setMensagem(msg);
-			caminho.pop_back();
+		try{
+			painel.printPainel();
+			std::string opcao = painel.getSelecao();
 
-		} else if(opcao == "2"){
-			painel.setMensagem("REMOVER");
+			if(opcao == "1"){
+				cadastrar<FUNCIONARIO>(caminho);
 
-		} else if(opcao == "3"){
-			painel.setMensagem("ALTERAR");
+			} else if(opcao == "2"){
+				painel.setMensagem("REMOVER");
 
-		} else if(opcao == "4"){
-			MapFuncionarios<FUNCIONARIO> mf("csv/funcionarios.csv");
-			consultar<FUNCIONARIO>(mf, caminho);
+			} else if(opcao == "3"){
+				painel.setMensagem("ALTERAR");
+
+			} else if(opcao == "4"){
+				consultar<FUNCIONARIO>("csv/funcionarios.csv", caminho);
+			}
 		}
+		catch(Excecao& e){
+			painel.setExcecao(e);
+		}
+			
 	}
 }
 

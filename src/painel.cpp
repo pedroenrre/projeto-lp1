@@ -4,74 +4,93 @@ using namespace std;
 
 void printCabecalho(string titulo, deque<string> caminho){
 	system("clear");
-	cout << "\nPET FERA \n";
+	cout << endl << "PET FERA" << endl;
 	printCaminho(caminho);
-	cout << "\n" << titulo << endl;
+	cout << endl << titulo << endl;
 }
 
 void printCaminho(deque<string> caminho){
 	if(!caminho.empty()){
-		cout << "\n";
+		cout << endl;
 		deque<string>::iterator it;
 		for (it = caminho.begin(); it != caminho.end(); ++it){
 			cout << *it;
 			if(it != caminho.end()-1)
 				cout << " >> ";
 		}
-		cout << "\n";
+		cout << endl;
 	}
 }
 
-Painel::Painel(string t, vector<string> o) : titulo(t), opcoes(o){
-	abrir = true;
-}
+Painel::Painel(string t, deque<string> c) : titulo(t), caminho(c), abrir(true){ }
 
-Painel::Painel(string t, vector<string> o, deque<string> c) : titulo(t), opcoes(o), caminho(c) {
-	abrir = true;
-}
+Painel::Painel(string t, vector<string> o) : titulo(t), corpo(vectorParaMap(o)), abrir(true){ }
+
+Painel::Painel(string t, vector<string> o, deque<string> c) : titulo(t), corpo(vectorParaMap(o)), caminho(c), abrir(true) { }
+
+Painel::Painel(string t, map<string, string> co) : titulo(t), corpo(co), abrir(true){ }
+
+Painel::Painel(string t, map<string, string> co, deque<string> c) : titulo(t), corpo(co), caminho(c), abrir(true){ }
 
 void Painel::printPainel(){
 	
-	printCabecalho(titulo, caminho);
+	system("clear");
+	cout << endl << "PET FERA" << endl;
+	printCaminho(caminho);
 
-	// Lista todas as opções do vector 'opcoes'
-	for (int i = 1; i < opcoes.size(); i++) 
-		cout << "\t" << i << ". " << opcoes[i] << endl;
-	
-	// Imprime opção 0 por último
-	cout << "\n\t0. " << opcoes[0] << "\n\n"; 
-	
+	excecao.printMensagem();
+	excecao.limparMensagem();
+
 	// Se a string 'mensagem' não estiver vazia imprima-a
 	if(!mensagem.empty())
 		cout << getMensagem() << endl;
 
-	cout << "SELECIONE UMA DAS OPÇÕES: ";
-	string s;
-	cin >> s;
-	verificaSelecao(s);
+	cout << endl << titulo << endl;
+
+	// Imprime o corpo
+	if(!corpo.empty()){
+		for (auto it = ++corpo.begin(); it != corpo.end(); ++it){
+
+			std::cout << "\t" << it->first;
+			std::cout << ". " << it->second << std::endl;
+		}
+
+		auto it = corpo.begin();
+		std::cout << "\n\t" << it->first;
+		std::cout << ". " << it->second << std::endl;
+	}
+	
+	if(!pergunta.empty()){
+		cout << endl << pergunta << ": ";
+		int s;
+		cin >> s;
+		if(cin.fail()){
+			cin.clear();
+			cin.ignore(__INT_MAX__, '\n');
+			throw Excecao("Valor inválido. Insira um valor númerico.");
+		}
+		else
+			verificaSelecao(intParaString(s));
+	}
+
 }
 
 void Painel::verificaSelecao(std::string s){
 
-	bool ehValida = false;
-	for (int i = 0; i < opcoes.size(); ++i){
-		string indice = intParaString(i);
-		if(s == indice)
-			ehValida = true;
-	}
+	auto it = corpo.find(s);
 
-	if(ehValida){
-		if(s == "0")
-			abrir = false;
-		else
-			setSelecao(s);
+    if(it == corpo.end()){
+        throw Excecao("Opção inválida. Tente Novamente."); 
+    } else if(s == "0") {
+		abrir = false;
 	} else {
-		mensagem = "Opção inválida. Tente Novamente.\n";
+		setSelecao(s);
 	}
+	
 }
 
 void Painel::setMensagem(string m){
-	mensagem = m + "\n";
+	mensagem = "\n" + m;
 }
 
 string Painel::getMensagem(){
@@ -96,4 +115,12 @@ bool Painel::getAbrir(){
 
 void Painel::setAbrir(bool a){
 	abrir = a;
+}
+
+void Painel::setPergunta(string p){
+	pergunta = p;
+}
+
+void Painel::setExcecao(Excecao &e){
+	excecao = e;
 }

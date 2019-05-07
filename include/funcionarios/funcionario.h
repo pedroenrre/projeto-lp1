@@ -108,6 +108,8 @@ class Funcionario{
 		//! @brief Seta 'espaço em branco' em todos os atributos do tipo string e '-1' em todos os de tipo numérico
 		virtual void limpar() = 0;
 
+		void printIdNome();
+
 		//! @brief Grava no arquivo CSV informado, 'todos os valores da classe'
 		//! @exception "Erro ao abrir arquivo para cadastro." caso o arquivo não exista ou haja alguma falha de execução
 		//! @param enderecoArquivo endereco do arquivo CSV

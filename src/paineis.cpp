@@ -3,27 +3,41 @@
 using namespace std;
 
 void painelPrincipal(){
+	
 	deque<string> caminho;
 	caminho.push_back("GERENCIAR");
+
 	string titulo = "GERENCIAR";
+
 	vector<string> opcoes;
 	opcoes.push_back("SAIR");
 	opcoes.push_back("ANIMAIS");
 	opcoes.push_back("FUNCIONÁRIOS");
 
 	Painel gerenciar(titulo, opcoes);
+	gerenciar.setPergunta("SELECIONE UMA DAS OPCOES");
 
 	while(gerenciar.getAbrir()){
-		gerenciar.printPainel();
-		string opcao = gerenciar.getSelecao();
 
-		if(opcao == "1"){
-			painelAnimais(caminho);
+		try
+		{
+			gerenciar.printPainel();
+			string opcao = gerenciar.getSelecao();
 
-		} else if(opcao == "2"){
-			painelFuncionarios(caminho);
+			if(opcao == "1"){
+				gerenciar.setMensagem("ANIMAIS");
+
+			} else if(opcao == "2"){
+				painelFuncionarios(caminho);
+			}
 		}
+		catch(Excecao& e)
+		{
+			gerenciar.setExcecao(e);
+		}
+			
 	}
+	
 }
 
 void painelAnimais(deque<string> caminho){
@@ -95,19 +109,27 @@ void painelFuncionarios(deque<string> caminho){
 	opcoes.push_back("VETERINÁRIOS");
 
 	Painel funcionarios(titulo, opcoes, caminho);	
+	funcionarios.setPergunta("SELECIONE UMA DAS OPCOES");
 
 	while(funcionarios.getAbrir()){
-		funcionarios.printPainel();
-		string opcao = funcionarios.getSelecao();
 
-		if(opcao == "1"){
-			string titulo = "TRATADORES";
-			painelFuncionarios<Tratador>(titulo, caminho);
+		try{
+			funcionarios.printPainel();
+			string opcao = funcionarios.getSelecao();
 
-		} else if(opcao == "2"){
-			string titulo = "VETERINARIOS";
-			painelFuncionarios<Veterinario>(titulo, caminho);
+			if(opcao == "1"){
+				string titulo = "TRATADORES";
+				painelFuncionarios<Tratador>(titulo, caminho);
 
+			} else if(opcao == "2"){
+				string titulo = "VETERINARIOS";
+				painelFuncionarios<Veterinario>(titulo, caminho);
+			}
 		}
+		catch(Excecao& e){
+			funcionarios.setExcecao(e);
+		}
+			
 	}
+
 }
