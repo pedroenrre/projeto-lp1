@@ -13,6 +13,7 @@ template<class CLASSE>
 class OperacoesCSV {
 	private:
 		std::map<int, CLASSE> lista; ///< Lista de tratadores
+        std::string enderecoArquivo;
 
 	public:
 		///@name Construtores e destrutor
@@ -22,18 +23,21 @@ class OperacoesCSV {
 		OperacoesCSV();
 
 		//! @brief Esse construtor instancia a lista de funcionarios a partir do arquivo CSV informado
-		//! @param linhaCSV endereço do arquivo CSV
-		OperacoesCSV(std::string enderecoArquivoCSV);
+		//! @param linha endereço do arquivo CSV
+		OperacoesCSV(std::string enderecoArquivo);
 		
 		///@}
 		///@name Getters
 		///@{
         
         //! Retorna o tipo do funcionario de acordo com a linha do arquivo CSV
-		//! @param linhaCSV endereço do arquivo CSV
-        std::string getTipoDaLinha(std::string linhaCSV);
+		//! @param linha endereço do arquivo CSV
+        std::string getTipoDaLinha(std::string linha);
 
         std::map<int, CLASSE> getLista();
+
+        void inserirMap(std::map<int, CLASSE> lista);
+        void inserirLinha(CLASSE classe);
 		
 		///@}
 		///@name Métodos
@@ -44,10 +48,11 @@ class OperacoesCSV {
 };
 
 template <class CLASSE>
-OperacoesCSV<CLASSE>::OperacoesCSV(std::string enderecoArquivoCSV){
+OperacoesCSV<CLASSE>::OperacoesCSV(std::string ea){
 
+    enderecoArquivo = ea;
     std::ifstream arquivo;
-    arquivo.open(enderecoArquivoCSV);
+    arquivo.open(enderecoArquivo);
 
     std::string linha;
     while (!arquivo.eof()){
@@ -68,9 +73,9 @@ OperacoesCSV<CLASSE>::OperacoesCSV(std::string enderecoArquivoCSV){
 }
 
 template <class CLASSE>
-std::string OperacoesCSV<CLASSE>::getTipoDaLinha(std::string linhaCSV){
+std::string OperacoesCSV<CLASSE>::getTipoDaLinha(std::string linha){
     std::string tipo;
-    std::istringstream ss(linhaCSV);
+    std::istringstream ss(linha);
     getline(ss, tipo, ';');
     getline(ss, tipo, ';');
     return tipo;
@@ -88,6 +93,36 @@ void OperacoesCSV<CLASSE>::print(){
         std::cout << "\t" << it->second.getId();
         std::cout << ". " << it->second.getNome() << std::endl;
     }
+}
+
+template <class CLASSE>
+void OperacoesCSV<CLASSE>::inserirMap(std::map<int, CLASSE> lista){
+
+    std::ofstream of;
+	of.open(enderecoArquivo);
+	
+    if(of.is_open()){
+        for (auto it = lista.begin(); it != lista.end(); ++it)
+            of << it->second.getStringFormatoCSV();
+
+	} else {
+		throw Excecao("Erro ao abrir arquivo para escrita.");
+	}
+
+}
+
+template <class CLASSE>
+void OperacoesCSV<CLASSE>::inserirLinha(CLASSE classe){
+
+    std::ofstream of;
+	of.open(enderecoArquivo, std::ios::app);
+
+	if(of.is_open()){
+		of << classe.getStringFormatoCSV();
+	} else {
+		throw Excecao("Erro ao abrir arquivo para escrita.");
+	}
+    
 }
 
 #endif // __OPERACOES_CSV_H__

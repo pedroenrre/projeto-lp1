@@ -4,9 +4,10 @@
 #include "excecao.h"
 #include "painel.h"
 #include "utilitarios.h"
+#include "crud/operacoes_csv.h"
 
 template <typename C>
-void cadastrar(std::deque<std::string> caminho){
+void cadastrar(std::string enderecoArquivo, std::deque<std::string> caminho){
 
 	caminho.push_back("CADASTRAR");
 	std::string titulo = "CADASTRAR";	
@@ -36,11 +37,11 @@ void cadastrar(std::deque<std::string> caminho){
 			
 	}
 	
-	confirmarCadastro(classe, cadastro);
+	confirmarCadastro(enderecoArquivo, classe, cadastro);
 }
 
 template <typename C>
-void confirmarCadastro(C &classe, Painel &p){
+void confirmarCadastro(std::string enderecoArquivo, C &classe, Painel &p){
 
 	p.printPainel();
 	std::cout << classe;
@@ -48,8 +49,11 @@ void confirmarCadastro(C &classe, Painel &p){
 	std::cout << "\nCONFIRMAR CADASTRO (s/n): ";
 	std::cin >> continuar;
 
+	OperacoesCSV<C> csv(enderecoArquivo);
+
 	if(continuar == "s"){
-		classe.inserirCSV("csv/funcionarios.csv");
+		std::string linha = classe.getStringFormatoCSV();
+		csv.inserirLinha(linha);
 		throw Excecao("Cadastrado com sucesso.");
 	} else {
 		throw Excecao("O cadastrato não foi efetuado. Tente novamente.");

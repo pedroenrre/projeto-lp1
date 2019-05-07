@@ -104,6 +104,8 @@ class Tratador : public Funcionario {
 		
 		std::string getTipo();
 
+		std::string getStringFormatoCSV();
+
 		///@}
 };
 

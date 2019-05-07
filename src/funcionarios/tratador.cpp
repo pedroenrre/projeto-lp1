@@ -113,27 +113,23 @@ ostream& operator<< (ostream &o, Tratador const t) {
 	return o;
 }
 
-void Tratador::inserirCSV(string enderecoArquivo){
-	
-	ofstream of;
-	of.open(enderecoArquivo, ios::app);
+string Tratador::getStringFormatoCSV(){
 
-	if(of.is_open()){
-		of << id << ";";
-		of << "Tratador" << ";";
-		of << nome << ";";
-		of << cpf << ";";
-		of << idade << ";";
-		of << tipo_sanguineo << ";";
-		of << fator_rh << ";";
-		of << especialidade << ";";
-		of << ";";
-		of << nivel_de_seguranca << ";";
-		of << endl;
-	} else {
-		throw Excecao("Erro ao abrir arquivo para cadastro.");
-	}
+	stringstream ss;
+	ss << id << ";";
+	ss << "Tratador" << ";";
+	ss << nome << ";";
+	ss << cpf << ";";
+	ss << idade << ";";
+	ss << tipo_sanguineo << ";";
+	ss << fator_rh << ";";
+	ss << especialidade << ";";
+	ss << ";";
+	ss << nivel_de_seguranca << ";";
+	ss << endl;
+	return ss.str();
 }
+
 
 string Tratador::getTipo(){
 	return "Tratador";

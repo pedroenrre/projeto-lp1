@@ -38,7 +38,7 @@ void painelFuncionarios(std::string titulo, std::deque<std::string> caminho){
 			std::string opcao = painel.getSelecao();
 
 			if(opcao == "1"){
-				cadastrar<FUNCIONARIO>(caminho);
+				cadastrar<FUNCIONARIO>("csv/funcionarios.csv", caminho);
 
 			} else if(opcao == "2"){
 				painel.setMensagem("REMOVER");
