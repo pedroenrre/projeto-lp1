@@ -12,13 +12,16 @@ Veterinario::Veterinario(string linhaCSV){
 	string tmp;
 	istringstream tratadorStream(linhaCSV);
 	
-	getline(tratadorStream, tmp, ';'); istringstream(tmp) >> id;
+	getline(tratadorStream, tmp, ';');
+	id = atoi(tmp.c_str());
 	getline(tratadorStream, tmp, ';');
 	getline(tratadorStream, nome, ';');
 	getline(tratadorStream, cpf, ';');
-	getline(tratadorStream, tmp, ';'); istringstream(tmp) >> idade;
+	getline(tratadorStream, tmp, ';');
+	idade = atoi(tmp.c_str());
 	getline(tratadorStream, tipo_sanguineo, ';');
-	getline(tratadorStream, tmp, ';'); istringstream(tmp) >> fator_rh;
+	getline(tratadorStream, tmp, ';'); 
+	fator_rh = tmp[0];
 	getline(tratadorStream, especialidade, ';'); 
 	getline(tratadorStream, crmv, ';'); 
 	getline(tratadorStream, tmp, ';');
