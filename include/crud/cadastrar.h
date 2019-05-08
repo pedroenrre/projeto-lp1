@@ -12,13 +12,18 @@ void cadastrar(std::string enderecoArquivo, std::deque<std::string> caminho){
 	caminho.push_back("CADASTRAR");
 	std::string titulo = "CADASTRAR";	
 	
-	Painel cadastro(titulo, caminho);	
+	Painel cadastro(titulo, caminho);
+	OperacoesCSV<C> csv(enderecoArquivo);
 	C classe;
 
 	while(classe.getContadorCin() != -1){
 
 		try{
 			cadastro.printPainel();
+			
+			int tamanhoLista = csv.getLista().size();
+			classe.setId(tamanhoLista+1);
+
 			std::cout << classe;
 			std::cin >> classe;
 			

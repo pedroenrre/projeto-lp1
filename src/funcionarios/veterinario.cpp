@@ -22,6 +22,7 @@ Veterinario::Veterinario(string linhaCSV){
 	getline(tratadorStream, especialidade, ';'); 
 	getline(tratadorStream, crmv, ';'); 
 	getline(tratadorStream, tmp, ';');
+	//total++;
 }
 
 void Veterinario::limpar(){
@@ -33,7 +34,7 @@ void Veterinario::limpar(){
 	fator_rh = ' ';
 	especialidade = ' ';
 	crmv = "";
-	contador_cin = 0;
+	contador_cin = 1;
 }
 
 istream& operator>> (istream &i, Veterinario &t) {

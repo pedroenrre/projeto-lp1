@@ -9,6 +9,8 @@ Excecao::Excecao(){
 
 Excecao::Excecao(string m) : mensagem(m){}
 
+Excecao::~Excecao() throw(){}
+
 Excecao::Excecao(const Excecao &e){
 	mensagem = e.getMensagem();
 }

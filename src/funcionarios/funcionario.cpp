@@ -6,6 +6,10 @@ int Funcionario::getId(){
 	return id;
 }
 
+void Funcionario::setId(int i){
+	id = i;
+}
+
 string Funcionario::getNome(){
 	return nome;
 }

@@ -115,6 +115,9 @@ class Funcionario{
 		//! @param enderecoArquivo endereco do arquivo CSV
 		virtual std::string getStringFormatoCSV() = 0;
 
+		//static int total;
+		//static int getTotal();
+		
 		///@}
 		
 };
