@@ -23,8 +23,8 @@ void consultar(std::string enderecoArquivo, std::deque<std::string> caminho){
 
 		try{
 			consulta.printPainel();
-			
-            for (auto it = lista.begin(); it != lista.end(); ++it)
+	        typename std::map<int, CLASSE>::iterator it;
+            for (it = lista.begin(); it != lista.end(); ++it)
                 it->second.printIdNome();
             
             std::cout << "\n\t0. VOLTAR\n";
@@ -51,7 +51,8 @@ void consultar(std::string enderecoArquivo, std::deque<std::string> caminho){
 template <typename CLASSE>
 void painelDetalhes(int id, std::map<int, CLASSE> &lista, std::deque<std::string> caminho){
 
-    auto it = lista.find(id);
+    typename std::map<int, CLASSE>::iterator it;
+    it = lista.find(id);
 
     if(it == lista.end())
         throw Excecao("O id informado é inválido. Tente novamente."); 

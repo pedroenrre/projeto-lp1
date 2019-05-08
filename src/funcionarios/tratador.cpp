@@ -11,17 +11,19 @@ Tratador::Tratador(string linhaCSV){
 	// linhaCSV = "1;Tratador;João Alberto;007.404.200-98;45;AB;-;Répteis e Aves;;1;"
 	string tmp;
 	istringstream tratadorStream(linhaCSV);
+
+	string aux;
 	
-	getline(tratadorStream, tmp, ';'); istringstream(tmp) >> id;
+	getline(tratadorStream, tmp, ';'); istringstream(tmp) >> aux; id = atoi(aux.c_str());
 	getline(tratadorStream, tmp, ';');
 	getline(tratadorStream, nome, ';');
 	getline(tratadorStream, cpf, ';');
-	getline(tratadorStream, tmp, ';'); istringstream(tmp) >> idade;
+	getline(tratadorStream, tmp, ';'); istringstream(tmp) >> aux; idade = atoi(aux.c_str());
 	getline(tratadorStream, tipo_sanguineo, ';');
-	getline(tratadorStream, tmp, ';'); istringstream(tmp) >> fator_rh;
+	getline(tratadorStream, tmp, ';'); istringstream(tmp) >> aux; fator_rh = aux[0];
 	getline(tratadorStream, especialidade, ';'); 
 	getline(tratadorStream, tmp, ';'); 
-	getline(tratadorStream, tmp, ';'); istringstream(tmp) >> nivel_de_seguranca;
+	getline(tratadorStream, tmp, ';'); istringstream(tmp) >> aux; nivel_de_seguranca = atoi(aux.c_str());
 }
 
 void Tratador::setNivelDeSeguranca(int nds){

@@ -52,7 +52,7 @@ OperacoesCSV<CLASSE>::OperacoesCSV(std::string ea){
 
     enderecoArquivo = ea;
     std::ifstream arquivo;
-    arquivo.open(enderecoArquivo);
+    arquivo.open(enderecoArquivo.c_str());
 
     std::string linha;
     while (!arquivo.eof()){
@@ -89,7 +89,8 @@ std::map<int, CLASSE> OperacoesCSV<CLASSE>::getLista(){
 template <class CLASSE>
 void OperacoesCSV<CLASSE>::print(){
 
-    for (auto it = lista.begin(); it != lista.end(); ++it){
+    typename std::map<int, CLASSE>::iterator it;
+    for (it = lista.begin(); it != lista.end(); ++it){
         std::cout << "\t" << it->second.getId();
         std::cout << ". " << it->second.getNome() << std::endl;
     }
@@ -99,10 +100,11 @@ template <class CLASSE>
 void OperacoesCSV<CLASSE>::inserirMap(std::map<int, CLASSE> lista){
 
     std::ofstream of;
-	of.open(enderecoArquivo);
+	of.open(enderecoArquivo.c_str());
 	
     if(of.is_open()){
-        for (auto it = lista.begin(); it != lista.end(); ++it)
+        typename std::map<int, CLASSE>::iterator it;
+        for (it = lista.begin(); it != lista.end(); ++it)
             of << it->second.getStringFormatoCSV();
 
 	} else {
@@ -115,7 +117,7 @@ template <class CLASSE>
 void OperacoesCSV<CLASSE>::inserirLinha(CLASSE classe){
 
     std::ofstream of;
-	of.open(enderecoArquivo, std::ios::app);
+	of.open(enderecoArquivo.c_str(), std::ios::app);
 
 	if(of.is_open()){
 		of << classe.getStringFormatoCSV();

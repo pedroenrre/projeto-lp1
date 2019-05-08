@@ -49,13 +49,14 @@ void Painel::printPainel(){
 
 	// Imprime o corpo
 	if(!corpo.empty()){
-		for (auto it = ++corpo.begin(); it != corpo.end(); ++it){
+        typename std::map<string, string>::iterator it;
+		for (it = ++corpo.begin(); it != corpo.end(); ++it){
 
 			std::cout << "\t" << it->first;
 			std::cout << ". " << it->second << std::endl;
 		}
-
-		auto it = corpo.begin();
+		
+		it = corpo.begin();
 		std::cout << "\n\t" << it->first;
 		std::cout << ". " << it->second << std::endl;
 	}
@@ -76,8 +77,8 @@ void Painel::printPainel(){
 }
 
 void Painel::verificaSelecao(std::string s){
-
-	auto it = corpo.find(s);
+    typename std::map<string, string>::iterator it;
+	it = corpo.find(s);
 
     if(it == corpo.end()){
         throw Excecao("Opção inválida. Tente Novamente."); 

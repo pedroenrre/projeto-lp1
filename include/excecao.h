@@ -12,6 +12,7 @@ class Excecao : public std::exception {
     public:
 		Excecao();
 		Excecao(const std::string m);
+		~Excecao() throw ();
 
     Excecao(const Excecao &e);
     const std::string getMensagem() const;
