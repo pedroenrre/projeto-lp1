@@ -2,14 +2,129 @@
 
 using namespace std;
 
-void printCabecalho(string titulo, deque<string> caminho){
-	system("clear");
-	cout << endl << "PET FERA" << endl;
-	printCaminho(caminho);
-	cout << endl << titulo << endl;
+// ------------------------------------------------------------------------
+//		Construtores e destrutor
+// ------------------------------------------------------------------------
+
+Painel::Painel() : abrir(true){ }
+
+Painel::Painel(string t, deque<string> c) : titulo(t), caminho(c), abrir(true){ }
+
+Painel::Painel(string t, vector<string> o) : titulo(t), opcoes(vectorParaMap(o)), abrir(true){ }
+
+Painel::Painel(string t, vector<string> o, deque<string> c) : titulo(t), opcoes(vectorParaMap(o)), caminho(c), abrir(true) { }
+
+Painel::Painel(string t, map<string, string> co) : titulo(t), opcoes(co), abrir(true){ }
+
+Painel::Painel(string t, map<string, string> co, deque<string> c) : titulo(t), opcoes(co), caminho(c), abrir(true){ }
+
+// ------------------------------------------------------------------------
+//		Getters
+// ------------------------------------------------------------------------
+
+string Painel::getTitulo(){
+	return titulo;
 }
 
-void printCaminho(deque<string> caminho){
+map<string, string> Painel::getOpcoes(){
+	return opcoes;
+}
+
+deque<string> Painel::getCaminho(){
+	return caminho;
+}
+
+string Painel::getPergunta(){
+	return pergunta;
+}
+
+string Painel::getResposta(){
+	string s = resposta;
+	resposta.erase();
+	return s;
+}
+
+bool Painel::getAbrir(){
+	return abrir;
+}
+
+Excecao Painel::getExcecao(){
+	return excecao;
+}
+
+// ------------------------------------------------------------------------
+//		Setters
+// ------------------------------------------------------------------------
+
+void Painel::setTitulo(string t){
+	titulo = t;
+}
+
+void Painel::setCaminho(deque<string> c){
+	caminho = c;
+}
+
+void Painel::setOpcoes(map<string, string> o){
+	opcoes = o;
+}
+
+void Painel::setOpcoes(vector<string> o){
+	opcoes = vectorParaMap(o);
+}
+
+void Painel::setPergunta(string p){
+	pergunta = p;
+}
+
+void Painel::setResposta(string r){
+	// Verifica se a chave 'r' não existe no map opcoes
+	typename map<string, string>::iterator it;
+	it = opcoes.find(r);
+    if(it == opcoes.end()){
+        throw Excecao("Opção inválida. Tente Novamente."); 
+    } else if(r == "0") {
+		abrir = false;
+	} else {
+		resposta = r;
+	}
+}
+
+void Painel::setAbrir(bool a){
+	abrir = a;
+}
+
+void Painel::setExcecao(Excecao &e){
+	excecao = e;
+}
+
+// ------------------------------------------------------------------------
+//		Operadores
+// ------------------------------------------------------------------------
+
+ostream& operator<< (ostream &o, Painel p){
+	system("clear");
+	cout << endl << "PET FERA" << endl;
+	p.printCaminho();
+
+	p.excecao.printMensagem();
+	p.excecao.limparMensagem();
+
+	cout << endl << p.titulo << endl;
+	
+	if(!p.opcoes.empty())
+		p.printOpcoes();
+	
+	if(!p.pergunta.empty())
+		cout << endl << p.pergunta;
+		
+}
+
+// ------------------------------------------------------------------------
+//		Métodos
+// ------------------------------------------------------------------------
+
+void Painel::printCaminho(){
+
 	if(!caminho.empty()){
 		cout << endl;
 		deque<string>::iterator it;
@@ -22,100 +137,19 @@ void printCaminho(deque<string> caminho){
 	}
 }
 
-Painel::Painel(string t, deque<string> c) : titulo(t), caminho(c), abrir(true){ }
+void Painel::printOpcoes(){
 
-Painel::Painel(string t, vector<string> o) : titulo(t), corpo(vectorParaMap(o)), abrir(true){ }
+	if(!opcoes.empty()){
+        typename map<string, string>::iterator it;
+		for (it = ++opcoes.begin(); it != opcoes.end(); ++it){
 
-Painel::Painel(string t, vector<string> o, deque<string> c) : titulo(t), corpo(vectorParaMap(o)), caminho(c), abrir(true) { }
-
-Painel::Painel(string t, map<string, string> co) : titulo(t), corpo(co), abrir(true){ }
-
-Painel::Painel(string t, map<string, string> co, deque<string> c) : titulo(t), corpo(co), caminho(c), abrir(true){ }
-
-void Painel::printPainel(){
-	
-	system("clear");
-	cout << endl << "PET FERA" << endl;
-	printCaminho(caminho);
-
-	excecao.printMensagem();
-	excecao.limparMensagem();
-
-	// Se a string 'mensagem' não estiver vazia imprima-a
-	if(!mensagem.empty())
-		cout << getMensagem() << endl;
-
-	cout << endl << titulo << endl;
-
-	// Imprime o corpo
-	if(!corpo.empty()){
-        typename std::map<string, string>::iterator it;
-		for (it = ++corpo.begin(); it != corpo.end(); ++it){
-
-			std::cout << "\t" << it->first;
-			std::cout << ". " << it->second << std::endl;
+			cout << "\t" << it->first;
+			cout << ". " << it->second << endl;
 		}
 		
-		it = corpo.begin();
-		std::cout << "\n\t" << it->first;
-		std::cout << ". " << it->second << std::endl;
+		it = opcoes.begin();
+		cout << "\n\t" << it->first;
+		cout << ". " << it->second << endl;
 	}
-	
-	if(!pergunta.empty()){
-		cout << endl << pergunta << ": ";
-		string s;
-		cin >> s;
-		verificaSelecao(s);
-	}
-
 }
 
-void Painel::verificaSelecao(std::string s){
-    typename std::map<string, string>::iterator it;
-	it = corpo.find(s);
-
-    if(it == corpo.end()){
-        throw Excecao("Opção inválida. Tente Novamente."); 
-    } else if(s == "0") {
-		abrir = false;
-	} else {
-		setSelecao(s);
-	}
-	
-}
-
-void Painel::setMensagem(string m){
-	mensagem = "\n" + m;
-}
-
-string Painel::getMensagem(){
-	string m = mensagem;
-	mensagem.erase();
-	return m;
-}
-
-void Painel::setSelecao(string s){
-	selecao = s;
-}
-
-string Painel::getSelecao(){
-	string s = selecao;
-	selecao.erase();
-	return s;
-}
-
-bool Painel::getAbrir(){
-	return abrir;
-}
-
-void Painel::setAbrir(bool a){
-	abrir = a;
-}
-
-void Painel::setPergunta(string p){
-	pergunta = p;
-}
-
-void Painel::setExcecao(Excecao &e){
-	excecao = e;
-}

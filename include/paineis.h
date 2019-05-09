@@ -20,31 +20,39 @@ void painelFuncionarios(std::deque<std::string> caminho);
 
 template <typename FUNCIONARIO>
 void painelFuncionarios(std::string titulo, std::deque<std::string> caminho){
-	caminho.push_back(titulo);
+	
+	Painel painel;
 	std::vector<std::string> opcoes;
+	std::string opcao;
+
+	caminho.push_back(titulo);
+	
 	opcoes.push_back("VOLTAR");
 	opcoes.push_back("CADASTRAR");
 	opcoes.push_back("REMOVER");
 	opcoes.push_back("ALTERAR");
 	opcoes.push_back("CONSULTAR");
 	
-	Painel painel(titulo, opcoes, caminho);
-	painel.setPergunta("SELECIONE UMA DAS OPCOES");
+	painel.setTitulo(titulo);
+	painel.setCaminho(caminho);
+	painel.setOpcoes(opcoes);
+	painel.setPergunta("SELECIONE UMA DAS OPCOES: ");
 
 	while(painel.getAbrir()){
 
 		try{
-			painel.printPainel();
-			std::string opcao = painel.getSelecao();
+			std::cout << painel;
+			std::cin >> opcao;
+			painel.setResposta(opcao);
 
 			if(opcao == "1"){
 				cadastrar<FUNCIONARIO>("csv/funcionarios.csv", caminho);
 
 			} else if(opcao == "2"){
-				painel.setMensagem("REMOVER");
+				// FAZER
 
 			} else if(opcao == "3"){
-				painel.setMensagem("ALTERAR");
+				// FAZER
 
 			} else if(opcao == "4"){
 				consultar<FUNCIONARIO>("csv/funcionarios.csv", caminho);
@@ -57,4 +65,4 @@ void painelFuncionarios(std::string titulo, std::deque<std::string> caminho){
 	}
 }
 
-#endif // __PAINEIS_H__S
+#endif // __PAINEIS_H__

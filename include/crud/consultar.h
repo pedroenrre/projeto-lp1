@@ -8,21 +8,23 @@
 
 template <typename CLASSE>
 void consultar(std::string enderecoArquivo, std::deque<std::string> caminho){
+	
+	Painel consulta;	
+	OperacoesCSV<CLASSE> csv(enderecoArquivo);
+    std::map<int, CLASSE> lista = csv.getLista();
+    int selecao = 1;
     
     caminho.push_back("CONSULTAR");
-	std::string titulo = "CONSULTAR";	
-	
-	Painel consulta(titulo, caminho);	
-	OperacoesCSV<CLASSE> csv(enderecoArquivo);
 
-    std::map<int, CLASSE> lista = csv.getLista();
-
-    int selecao = 1;
+	consulta.setTitulo("CONSULTAR");
+	consulta.setCaminho(caminho);
 
 	while(selecao != 0){
 
 		try{
-			consulta.printPainel();
+			std::cout << consulta;
+
+			// Imprime a lista de funcionarios id-nome
 	        typename std::map<int, CLASSE>::iterator it;
             for (it = lista.begin(); it != lista.end(); ++it)
                 it->second.printIdNome();
@@ -66,7 +68,7 @@ void painelDetalhes(int id, std::map<int, CLASSE> &lista, std::deque<std::string
 	while(selecao != 0){
 
 		try{
-			detalhes.printPainel();
+			std::cout << detalhes;
 
             std::cout << it->second;
         

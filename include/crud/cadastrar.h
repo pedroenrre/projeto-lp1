@@ -8,18 +8,20 @@
 
 template <typename C>
 void cadastrar(std::string enderecoArquivo, std::deque<std::string> caminho){
+	
+	OperacoesCSV<C> csv(enderecoArquivo);
+	Painel cadastro;
+	C classe;
 
 	caminho.push_back("CADASTRAR");
-	std::string titulo = "CADASTRAR";	
 	
-	Painel cadastro(titulo, caminho);
-	OperacoesCSV<C> csv(enderecoArquivo);
-	C classe;
+	cadastro.setTitulo("CADASTRAR");
+	cadastro.setCaminho(caminho);
 
 	while(classe.getContadorCin() != -1){
 
 		try{
-			cadastro.printPainel();
+			std::cout << cadastro;
 			
 			int tamanhoLista = csv.getLista().size();
 			classe.setId(tamanhoLista+1);
@@ -47,17 +49,19 @@ void cadastrar(std::string enderecoArquivo, std::deque<std::string> caminho){
 
 template <typename C>
 void confirmarCadastro(std::string enderecoArquivo, C &classe, Painel &p){
-
-	p.printPainel();
-	std::cout << classe;
+	
 	std::string continuar;
+	std::string linha;
+
+	std::cout << p;
+	std::cout << classe;
 	std::cout << "\nCONFIRMAR CADASTRO (s/n): ";
 	std::cin >> continuar;
 
 	OperacoesCSV<C> csv(enderecoArquivo);
 
 	if(continuar == "s"){
-		std::string linha = classe.getStringFormatoCSV();
+		linha = classe.getStringFormatoCSV();
 		csv.inserirLinha(linha);
 		throw Excecao("Cadastrado com sucesso.");
 	} else {
