@@ -37,4 +37,4 @@
 # Doc
 doc/html
 
-bin/*
+bin/*.out

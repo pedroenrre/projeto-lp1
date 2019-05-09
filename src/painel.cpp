@@ -63,15 +63,9 @@ void Painel::printPainel(){
 	
 	if(!pergunta.empty()){
 		cout << endl << pergunta << ": ";
-		int s;
+		string s;
 		cin >> s;
-		if(cin.fail()){
-			cin.clear();
-			cin.ignore(__INT_MAX__, '\n');
-			throw Excecao("Valor inválido. Insira um valor númerico.");
-		}
-		else
-			verificaSelecao(intParaString(s));
+		verificaSelecao(s);
 	}
 
 }
